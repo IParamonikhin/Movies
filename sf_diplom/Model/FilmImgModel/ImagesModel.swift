@@ -14,10 +14,10 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 import Foundation
 import ObjectMapper
 
-struct Json4Swift_Base : Mappable {
+struct ImagesModel : Mappable {
 	var total : Int?
 	var totalPages : Int?
-	var items : [Items]?
+	var images : [Images]?
 
 	init?(map: Map) {
 
@@ -27,7 +27,7 @@ struct Json4Swift_Base : Mappable {
 
 		total <- map["total"]
 		totalPages <- map["totalPages"]
-		items <- map["items"]
+        images <- map["items"]
 	}
 
 }

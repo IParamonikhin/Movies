@@ -14,7 +14,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 import Foundation
 import ObjectMapper
 
-struct Items : Mappable {
+struct Trailers : Mappable {
 	var url : String?
 	var name : String?
 	var site : String?

@@ -6,15 +6,22 @@
 //
 
 import UIKit
+import SnapKit
 
 class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemPurple
+        initialize()
+        
+        view.backgroundColor = UIColor(named: "BackgroundColor")
+        
         // Do any additional setup after loading the view.
     }
-
-
 }
 
+private extension MainViewController{
+    
+    func initialize() {
+    }
+}

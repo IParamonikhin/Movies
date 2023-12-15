@@ -14,9 +14,9 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 import Foundation
 import ObjectMapper
 
-struct Json4Swift_Base : Mappable {
+struct TrailerModel : Mappable {
 	var total : Int?
-	var items : [Items]?
+	var trailers : [Trailers]?
 
 	init?(map: Map) {
 
@@ -25,7 +25,7 @@ struct Json4Swift_Base : Mappable {
 	mutating func mapping(map: Map) {
 
 		total <- map["total"]
-		items <- map["items"]
+		trailers <- map["items"]
 	}
 
 }
