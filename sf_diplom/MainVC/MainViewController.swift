@@ -15,10 +15,13 @@ class MainViewController: UIViewController {
     var mainVCDataSource: MainVCDataSource?
     
     let model = Model()
-    
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        model.request()
+        model.requestFilmList(){
+            self.collectionView.reloadData()
+        }
         initialize()
     }
     
@@ -27,18 +30,11 @@ class MainViewController: UIViewController {
 private extension MainViewController{
     
     func initialize() {
-        var fil = Films(map: Films)
-        fil.favorite = true
-        fil.kinopoiskId = 100
-        fil.nameRu = "1+1"
-        fil.posterUrlPreview = "https://kinopoiskapiunofficial.tech/images/posters/kp_small/535341.jpg"
-        fil.ratingKinopoisk = 8.5
-        fil.year = 2011
-        model.films.append(fil)
+        
         view.backgroundColor = UIColor(named: "BackgroundColor")
         
         mainVCDelegate = MainVCDelegate()
-        mainVCDataSource = MainVCDataSource()
+        mainVCDataSource = MainVCDataSource(model: model)
         
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .vertical

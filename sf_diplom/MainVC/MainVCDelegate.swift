@@ -14,7 +14,7 @@ class MainVCDelegate: NSObject, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (collectionView.frame.width - borderOffset) / 2
-        let height = (collectionView.frame.height - borderOffset) / 2.5
+        let height = width * 1.5
         return CGSizeMake(width, height)
     }
     
