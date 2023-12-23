@@ -12,9 +12,9 @@ import SDWebImage
 class FilmListCollectionViewCell: UICollectionViewCell {
     
     func configure(film: FilmCellData){
-        self.nameLable.text = film.name
-        self.rateLable.text = film.rate
-        self.yearLable.text = film.year
+        self.nameLabel.text = film.name
+        self.rateLabel.text = film.rate
+        self.yearLabel.text = film.year
         self.imageView.sd_setImage(with: film.imgUrl)
     }
     
@@ -27,9 +27,9 @@ class FilmListCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private let nameLable = UILabel()
-    private let rateLable = UILabel()
-    private let yearLable = UILabel()
+    private let nameLabel = UILabel()
+    private let rateLabel = UILabel()
+    private let yearLabel = UILabel()
     private let imageView: UIImageView = {
         let view = UIImageView()
         return view
@@ -54,7 +54,7 @@ private extension FilmListCollectionViewCell{
         
         contentView.layer.cornerRadius = 10
         contentView.layer.borderWidth = 1.0
-        contentView.layer.borderColor = .none//UIColor(named: "BorderShadowColor")?.cgColor
+        contentView.layer.borderColor = .none
         
         contentView.layer.shadowOffset = CGSizeMake(0, 0)
         contentView.layer.shadowRadius = 5.0
@@ -64,31 +64,42 @@ private extension FilmListCollectionViewCell{
         
         
         contentView.addSubview(imageView)
-        contentView.addSubview(nameLable)
-        contentView.addSubview(rateLable)
-        contentView.addSubview(yearLable)
+        contentView.addSubview(nameLabel)
+        contentView.addSubview(rateLabel)
+        contentView.addSubview(yearLabel)
+        
         imageView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
             make.height.equalTo(height * 0.85)
         }
         imageView.layer.cornerRadius = 10
         imageView.layer.masksToBounds = true
-        nameLable.snp.makeConstraints { make in
+        
+        nameLabel.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(4)
             make.top.equalTo(imageView.snp.bottom)
-            make.height.equalTo((height * 0.15) / 2)
+//            make.height.equalTo((height * 0.15) / 2)
         }
-        nameLable.textColor = .white
-        rateLable.snp.makeConstraints { make in
-            make.left.bottom.equalToSuperview().inset(4)
-            make.top.equalTo(nameLable.snp.bottom)
+        nameLabel.textColor = .white
+        
+        nameLabel.font = UIFont.boldSystemFont(ofSize: 17.0)
+        nameLabel.lineBreakMode = .byWordWrapping
+        nameLabel.numberOfLines = 2
+        
+        rateLabel.snp.makeConstraints { make in
+            make.left.top.equalToSuperview().inset(5)
         }
-        rateLable.textColor = .white
-        yearLable.snp.makeConstraints { make in
-            make.right.bottom.equalToSuperview().inset(4)
-            make.top.equalTo(nameLable.snp.bottom)
-            make.left.equalTo(rateLable.snp.right)
+        rateLabel.textColor = .white
+        rateLabel.backgroundColor = .systemGray
+        rateLabel.layer.cornerRadius = 4
+        rateLabel.clipsToBounds = true
+        
+        yearLabel.snp.makeConstraints { make in
+            make.right.top.equalToSuperview().inset(5)
         }
-        yearLable.textColor = .white
+        yearLabel.textColor = .white
+        yearLabel.backgroundColor = .systemGray
+        yearLabel.layer.cornerRadius = 4
+        yearLabel.clipsToBounds = true
     }
 }
