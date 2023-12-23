@@ -9,8 +9,7 @@ target 'sf_diplom' do
 	pod 'RealmSwift', '~>10.43.1'
 	pod 'SDWebImage', '~>5.18.3'
 	pod 'Alamofire'
-	pod 'ObjectMapper', '~>3.5.3'
-	pod 'AlamofireObjectMapper'
+	pod 'SwiftyJSON'
     	pod 'SnapKit', '~>5.6.0'
 
 end

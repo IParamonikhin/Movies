@@ -7,7 +7,7 @@
 
 import Foundation
 
-class KinopoiskAPI {
+struct KinopoiskAPI {
     let kinopoiskToken = "134aebc6-5099-4a05-9579-b3f47f482aaa"
     
     let baseUrl = "https://kinopoiskapiunofficial.tech/api/v2.2"
