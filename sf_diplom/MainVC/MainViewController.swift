@@ -41,7 +41,9 @@ private extension MainViewController{
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.bottom.equalToSuperview()
+            make.left.equalToSuperview()//.offset(8)
+            make.right.equalToSuperview()//.inset(8)
         }
         collectionView.register(FilmListCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.backgroundColor = .none

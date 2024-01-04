@@ -45,8 +45,9 @@ private extension FilmListCollectionViewCell{
         let width = contentView.frame.width
         
         contentView.snp.makeConstraints { make in
-            make.left.right.equalToSuperview().inset(8)
-            make.top.equalToSuperview().offset(16)
+            make.right.equalToSuperview()
+            make.left.equalToSuperview()
+            make.top.equalToSuperview()
             make.width.equalTo(width)
         }
         contentView.isUserInteractionEnabled = true
@@ -69,36 +70,40 @@ private extension FilmListCollectionViewCell{
         contentView.addSubview(yearLabel)
         
         imageView.snp.makeConstraints { make in
-            make.top.left.right.equalToSuperview()
+            make.top.equalToSuperview()
+            make.right.equalToSuperview().inset(8)
+            make.left.equalToSuperview().offset(8)
+            
             make.height.equalTo(height * 0.85)
         }
         imageView.layer.cornerRadius = 10
         imageView.layer.masksToBounds = true
         
         nameLabel.snp.makeConstraints { make in
-            make.left.right.equalToSuperview().inset(4)
-            make.top.equalTo(imageView.snp.bottom)
+            make.left.right.equalToSuperview().inset(12)
+            make.top.equalTo(imageView.snp.bottom).offset(3)
 //            make.height.equalTo((height * 0.15) / 2)
         }
         nameLabel.textColor = .white
         
         nameLabel.font = UIFont.boldSystemFont(ofSize: 17.0)
-        nameLabel.lineBreakMode = .byWordWrapping
-        nameLabel.numberOfLines = 2
+        nameLabel.lineBreakMode = .byTruncatingTail
         
         rateLabel.snp.makeConstraints { make in
-            make.left.top.equalToSuperview().inset(5)
+            make.top.equalToSuperview().inset(4)
+            make.left.top.equalToSuperview().inset(16)
         }
         rateLabel.textColor = .white
-        rateLabel.backgroundColor = .systemGray
+        rateLabel.backgroundColor = .black.withAlphaComponent(0.5)
         rateLabel.layer.cornerRadius = 4
         rateLabel.clipsToBounds = true
         
         yearLabel.snp.makeConstraints { make in
-            make.right.top.equalToSuperview().inset(5)
+            make.top.equalToSuperview().inset(4)
+            make.right.top.equalToSuperview().inset(16)
         }
         yearLabel.textColor = .white
-        yearLabel.backgroundColor = .systemGray
+        yearLabel.backgroundColor = .black.withAlphaComponent(0.5)
         yearLabel.layer.cornerRadius = 4
         yearLabel.clipsToBounds = true
     }

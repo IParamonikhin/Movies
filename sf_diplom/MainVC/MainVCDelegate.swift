@@ -10,10 +10,10 @@ import UIKit
 
 class MainVCDelegate: NSObject, UICollectionViewDelegateFlowLayout {
     
-    private let borderOffset: CGFloat = 24
+    private let borderOffset: CGFloat = 8
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (collectionView.frame.width - borderOffset) / 2
+        let width = (collectionView.frame.width  / 2) - borderOffset
         let height = width * 1.5
         return CGSizeMake(width, height)
     }
