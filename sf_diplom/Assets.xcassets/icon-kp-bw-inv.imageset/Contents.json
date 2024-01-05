@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "icon-kp-bw-inv.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

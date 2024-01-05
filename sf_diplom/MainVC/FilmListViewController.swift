@@ -22,6 +22,9 @@ class MainViewController: UIViewController {
         model.requestFilmList(){
             self.collectionView.reloadData()
         }
+        model.requestFilmCard(id: 1143242){
+            self.collectionView.reloadData()
+        }
         initialize()
     }
     
