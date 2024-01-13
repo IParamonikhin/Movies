@@ -298,6 +298,13 @@ private extension FilmCardViewController{
     // MARK: - Action Methods
     
     @objc func buttonClicked() {
-        print("Button Clicked")
+        let vc = DescriptionViewController()
+        vc.descriptionString = filmCard?.description
+        vc.modalPresentationStyle = .custom
+        vc.transitioningDelegate = self.filmCardVCDelegate
+        present(vc, animated: true, completion: nil)
     }
 }
+
+
+
