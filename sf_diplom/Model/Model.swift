@@ -9,7 +9,6 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-// Custom errors
 enum APIError: Error {
     case invalidURL
     case networkError(Error)
@@ -35,7 +34,6 @@ class Model {
 
     var filmListStat = FilmListLoadingStatistic()
 
-    // Define api as a lazy property
     lazy var api: KinopoiskAPI = {
         return KinopoiskAPI()
     }()
@@ -63,7 +61,6 @@ class Model {
 
         var filmCardJSON: JSON?
         var imagesJSON: JSON?
-        var trailersJSON: JSON?
 
         func handleJSONResponse(url: URL, completion: @escaping (JSON) -> Void) {
             group.enter()
@@ -84,15 +81,11 @@ class Model {
             imagesJSON = json
         }
 
-        handleJSONResponse(url: api.buildURL(for: .filmTrailers(id: id))!) { json in
-            trailersJSON = json
-        }
 
         group.notify(queue: .main) {
             if let filmCardJSON = filmCardJSON,
-               let imagesJSON = imagesJSON,
-               let trailersJSON = trailersJSON {
-                self.filmCard = FilmCardModel(filmCadrDictionary: filmCardJSON, imagesDictionary: imagesJSON, trailersDictionary: trailersJSON)
+               let imagesJSON = imagesJSON{
+                self.filmCard = FilmCardModel(filmCadrDictionary: filmCardJSON, imagesDictionary: imagesJSON)
                 success()
             }
         }
@@ -107,6 +100,7 @@ class Model {
             year: String(film.year)
         )
     }
+    
 
     private func requestJSON(url: URL, success: @escaping (JSON) -> Void, failure: @escaping (Error) -> Void) {
         let headers = ["x-api-key": api.kinopoiskToken, "Content-Type": "application/json"]
@@ -126,6 +120,8 @@ class Model {
             }
     }
 
+    
+    
     private func updateFilmListStat(_ json: JSON) {
         filmListStat.pages = json["totalPages"].intValue
         filmListStat.totalCount = json["total"].intValue

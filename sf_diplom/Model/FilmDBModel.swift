@@ -26,17 +26,6 @@ struct Images {
     }
 }
 
-struct Trailers {
-    var url: String
-    var name: String
-    var site: String
-    
-    init(trailersDictionary: JSON) {
-        url = trailersDictionary["url"].stringValue
-        name = trailersDictionary["name"].stringValue
-        site = trailersDictionary["site"].stringValue
-    }
-}
 
 struct Films {
     var kinopoiskId: Int
@@ -69,9 +58,8 @@ struct FilmCardModel {
     var shortDescription: String
     var genres: [Genres]
     var images: [Images]
-    var trailers: [Trailers]
     
-    init(filmCadrDictionary: JSON, imagesDictionary: JSON, trailersDictionary: JSON) {
+    init(filmCadrDictionary: JSON, imagesDictionary: JSON) {
         kinopoiskId = filmCadrDictionary["kinopoiskId"].intValue
         nameRu = filmCadrDictionary["nameRu"].stringValue
         nameOriginal = filmCadrDictionary["nameOriginal"].stringValue
@@ -84,6 +72,5 @@ struct FilmCardModel {
         shortDescription = filmCadrDictionary["shortDescription"].stringValue
         genres = filmCadrDictionary["genres"].arrayValue.map { Genres(genresDictionary: $0) }
         images = imagesDictionary["items"].arrayValue.map { Images(imagesDictionary: $0) }
-        trailers = trailersDictionary["items"].arrayValue.map { Trailers(trailersDictionary: $0) }
     }
 }

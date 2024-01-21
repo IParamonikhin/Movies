@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C05D3342B2B85630005B3F7 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C05D3332B2B85630005B3F7 /* FavoritesViewController.swift */; };
 		2C05D3362B2B85740005B3F7 /* FilmCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C05D3352B2B85740005B3F7 /* FilmCardViewController.swift */; };
-		2C05D3382B2B85E90005B3F7 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C05D3372B2B85E90005B3F7 /* GalleryViewController.swift */; };
-		2C05D33A2B2B85F90005B3F7 /* FullPicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C05D3392B2B85F90005B3F7 /* FullPicViewController.swift */; };
+		2C05D33A2B2B85F90005B3F7 /* FullImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C05D3392B2B85F90005B3F7 /* FullImageViewController.swift */; };
 		2C05D33C2B2C2DCC0005B3F7 /* APIRequestConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C05D33B2B2C2DCC0005B3F7 /* APIRequestConst.swift */; };
 		2C05D3562B2C3B340005B3F7 /* FilmListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C05D3552B2C3B340005B3F7 /* FilmListCollectionViewCell.swift */; };
 		2C05D3582B2C477D0005B3F7 /* FilmListVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C05D3572B2C477D0005B3F7 /* FilmListVCDelegate.swift */; };
@@ -21,6 +19,10 @@
 		2C06090B2B2B5C4E0078FF50 /* FilmListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C06090A2B2B5C4E0078FF50 /* FilmListViewController.swift */; };
 		2C0609102B2B5C500078FF50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C06090F2B2B5C500078FF50 /* Assets.xcassets */; };
 		2C0609132B2B5C500078FF50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C0609112B2B5C500078FF50 /* LaunchScreen.storyboard */; };
+		2C0B96E42B5D0D1F00338BFD /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0B96E32B5D0D1F00338BFD /* TabBarController.swift */; };
+		2C0B96E62B5D0D6E00338BFD /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0B96E52B5D0D6E00338BFD /* SearchViewController.swift */; };
+		2C0B96E82B5D0D8D00338BFD /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0B96E72B5D0D8D00338BFD /* FavoritesViewController.swift */; };
+		2C0B96EA2B5D148D00338BFD /* FilmListDisplayingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0B96E92B5D148D00338BFD /* FilmListDisplayingProtocol.swift */; };
 		2C0D04572B36E867007FEAA7 /* FilmDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0D04562B36E867007FEAA7 /* FilmDBModel.swift */; };
 		2C0D045A2B46E1C5007FEAA7 /* FilmCardVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0D04592B46E1C5007FEAA7 /* FilmCardVCDelegate.swift */; };
 		2C0D045C2B46E2AC007FEAA7 /* FilmCardVCDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0D045B2B46E2AC007FEAA7 /* FilmCardVCDataSource.swift */; };
@@ -30,10 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2C05D3332B2B85630005B3F7 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		2C05D3352B2B85740005B3F7 /* FilmCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmCardViewController.swift; sourceTree = "<group>"; };
-		2C05D3372B2B85E90005B3F7 /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
-		2C05D3392B2B85F90005B3F7 /* FullPicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullPicViewController.swift; sourceTree = "<group>"; };
+		2C05D3392B2B85F90005B3F7 /* FullImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullImageViewController.swift; sourceTree = "<group>"; };
 		2C05D33B2B2C2DCC0005B3F7 /* APIRequestConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestConst.swift; sourceTree = "<group>"; };
 		2C05D3552B2C3B340005B3F7 /* FilmListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmListCollectionViewCell.swift; sourceTree = "<group>"; };
 		2C05D3572B2C477D0005B3F7 /* FilmListVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmListVCDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +46,10 @@
 		2C06090F2B2B5C500078FF50 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C0609122B2B5C500078FF50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C0609142B2B5C500078FF50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C0B96E32B5D0D1F00338BFD /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		2C0B96E52B5D0D6E00338BFD /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		2C0B96E72B5D0D8D00338BFD /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		2C0B96E92B5D148D00338BFD /* FilmListDisplayingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmListDisplayingProtocol.swift; sourceTree = "<group>"; };
 		2C0D04562B36E867007FEAA7 /* FilmDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDBModel.swift; sourceTree = "<group>"; };
 		2C0D04592B46E1C5007FEAA7 /* FilmCardVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmCardVCDelegate.swift; sourceTree = "<group>"; };
 		2C0D045B2B46E2AC007FEAA7 /* FilmCardVCDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmCardVCDataSource.swift; sourceTree = "<group>"; };
@@ -110,14 +114,15 @@
 		2C0609052B2B5C4E0078FF50 /* sf_diplom */ = {
 			isa = PBXGroup;
 			children = (
+				2C0B96E92B5D148D00338BFD /* FilmListDisplayingProtocol.swift */,
+				2C0B96E32B5D0D1F00338BFD /* TabBarController.swift */,
 				2C05D33F2B2C331C0005B3F7 /* Model */,
 				2C05D3542B2C3B090005B3F7 /* FilmListVC */,
 				2C0D04582B46E182007FEAA7 /* FilmCardVC */,
-				2C0609062B2B5C4E0078FF50 /* AppDelegate.swift */,
+				2C0B96EB2B5D366D00338BFD /* SearchVC */,
+				2C0B96EC2B5D367C00338BFD /* FavoritesVC */,
 				2C0609082B2B5C4E0078FF50 /* SceneDelegate.swift */,
-				2C05D3332B2B85630005B3F7 /* FavoritesViewController.swift */,
-				2C05D3372B2B85E90005B3F7 /* GalleryViewController.swift */,
-				2C05D3392B2B85F90005B3F7 /* FullPicViewController.swift */,
+				2C0609062B2B5C4E0078FF50 /* AppDelegate.swift */,
 				2C06090F2B2B5C500078FF50 /* Assets.xcassets */,
 				2C0609112B2B5C500078FF50 /* LaunchScreen.storyboard */,
 				2C0609142B2B5C500078FF50 /* Info.plist */,
@@ -125,14 +130,31 @@
 			path = sf_diplom;
 			sourceTree = "<group>";
 		};
+		2C0B96EB2B5D366D00338BFD /* SearchVC */ = {
+			isa = PBXGroup;
+			children = (
+				2C0B96E52B5D0D6E00338BFD /* SearchViewController.swift */,
+			);
+			path = SearchVC;
+			sourceTree = "<group>";
+		};
+		2C0B96EC2B5D367C00338BFD /* FavoritesVC */ = {
+			isa = PBXGroup;
+			children = (
+				2C0B96E72B5D0D8D00338BFD /* FavoritesViewController.swift */,
+			);
+			path = FavoritesVC;
+			sourceTree = "<group>";
+		};
 		2C0D04582B46E182007FEAA7 /* FilmCardVC */ = {
 			isa = PBXGroup;
 			children = (
-				2CACA2522B52DFC100553277 /* DescriptionVC */,
 				2C05D3352B2B85740005B3F7 /* FilmCardViewController.swift */,
 				2C0D045D2B46E2C4007FEAA7 /* FilmCardCollectionViewCell.swift */,
 				2C0D04592B46E1C5007FEAA7 /* FilmCardVCDelegate.swift */,
 				2C0D045B2B46E2AC007FEAA7 /* FilmCardVCDataSource.swift */,
+				2CACA2522B52DFC100553277 /* DescriptionVC */,
+				2CEEDDA42B59A3FE008F56AB /* FullImageVC */,
 			);
 			path = FilmCardVC;
 			sourceTree = "<group>";
@@ -143,6 +165,14 @@
 				2CACA2532B52DFEE00553277 /* DescriptionViewController.swift */,
 			);
 			path = DescriptionVC;
+			sourceTree = "<group>";
+		};
+		2CEEDDA42B59A3FE008F56AB /* FullImageVC */ = {
+			isa = PBXGroup;
+			children = (
+				2C05D3392B2B85F90005B3F7 /* FullImageViewController.swift */,
+			);
+			path = FullImageVC;
 			sourceTree = "<group>";
 		};
 		62DCB161FE468E644686D37A /* Pods */ = {
@@ -277,22 +307,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C06090B2B2B5C4E0078FF50 /* FilmListViewController.swift in Sources */,
+				2C0B96E42B5D0D1F00338BFD /* TabBarController.swift in Sources */,
 				2CACA2542B52DFEE00553277 /* DescriptionViewController.swift in Sources */,
+				2C0B96E62B5D0D6E00338BFD /* SearchViewController.swift in Sources */,
 				2C05D3362B2B85740005B3F7 /* FilmCardViewController.swift in Sources */,
 				2C0609072B2B5C4E0078FF50 /* AppDelegate.swift in Sources */,
 				2C05D3582B2C477D0005B3F7 /* FilmListVCDelegate.swift in Sources */,
 				2C05D35A2B2C478D0005B3F7 /* FilmListVCDataSource.swift in Sources */,
-				2C05D3382B2B85E90005B3F7 /* GalleryViewController.swift in Sources */,
 				2C05D3562B2C3B340005B3F7 /* FilmListCollectionViewCell.swift in Sources */,
 				2C0D04572B36E867007FEAA7 /* FilmDBModel.swift in Sources */,
+				2C0B96E82B5D0D8D00338BFD /* FavoritesViewController.swift in Sources */,
 				2C0D045E2B46E2C4007FEAA7 /* FilmCardCollectionViewCell.swift in Sources */,
 				2C05D35C2B2C56000005B3F7 /* Model.swift in Sources */,
 				2C0D045A2B46E1C5007FEAA7 /* FilmCardVCDelegate.swift in Sources */,
 				2C05D33C2B2C2DCC0005B3F7 /* APIRequestConst.swift in Sources */,
-				2C05D3342B2B85630005B3F7 /* FavoritesViewController.swift in Sources */,
 				2C0609092B2B5C4E0078FF50 /* SceneDelegate.swift in Sources */,
 				2C0D045C2B46E2AC007FEAA7 /* FilmCardVCDataSource.swift in Sources */,
-				2C05D33A2B2B85F90005B3F7 /* FullPicViewController.swift in Sources */,
+				2C0B96EA2B5D148D00338BFD /* FilmListDisplayingProtocol.swift in Sources */,
+				2C05D33A2B2B85F90005B3F7 /* FullImageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

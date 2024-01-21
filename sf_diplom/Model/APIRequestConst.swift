@@ -36,8 +36,6 @@ struct KinopoiskAPI {
         if let page = page {
             urlString += "&page=\(page)"
         }
-
-        // Use optional binding to handle the case where the URL string is invalid
         return URL(string: urlString)
     }
 }

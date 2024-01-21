@@ -1,13 +1,14 @@
 //
-//  FilmListViewController.swift
+//  FavoritesViewController.swift
 //  sf_diplom
 //
-//  Created by Иван on 14.12.2023.
+//  Created by Иван on 21.01.2024.
+//
 
 import UIKit
 import SnapKit
 
-class FilmListViewController: UIViewController, FilmListDisplaying {
+class FavoritesViewController: UIViewController, FilmListDisplaying {
 
     var collectionView: UICollectionView!
     var filmListDelegate: FilmListVCDelegate?
@@ -19,13 +20,14 @@ class FilmListViewController: UIViewController, FilmListDisplaying {
 
         initializeFilmList()
 
+        
         model.requestFilmList {
             self.collectionView.reloadData()
         } failure: { error in
             print("Failed to load film list: \(error)")
         }
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -35,5 +37,4 @@ class FilmListViewController: UIViewController, FilmListDisplaying {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-    
 }

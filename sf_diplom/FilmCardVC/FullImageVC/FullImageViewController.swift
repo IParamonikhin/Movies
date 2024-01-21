@@ -1,5 +1,5 @@
 //
-//  FullPicViewController.swift
+//  FullImageViewController.swift
 //  sf_diplom
 //
 //  Created by Иван on 14.12.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FullPicViewController: UIViewController {
+class FullImageViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

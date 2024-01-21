@@ -6,6 +6,7 @@
 
 import UIKit
 import SDWebImage
+import AVKit
 
 class FilmCardViewController: UIViewController {
 
@@ -17,6 +18,9 @@ class FilmCardViewController: UIViewController {
 
     private var filmCardVCDelegate: FilmCardVCDelegate?
     private var filmCardVCDataSource: FilmCardVCDataSource?
+    
+    private var avPlayer: AVPlayer?
+    private var avPlayerViewController: AVPlayerViewController?
 
     private let scrollView: UIScrollView = {
         let scroll = UIScrollView()
@@ -37,7 +41,34 @@ class FilmCardViewController: UIViewController {
         imageView.layer.masksToBounds = true
         return imageView
     }()
+    
+    
+    private let likeButton: UIButton = {
+        let button = UIButton()
 
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        backgroundView.layer.cornerRadius = 4
+        backgroundView.clipsToBounds = true
+
+        let heartImageView = UIImageView(image: UIImage(systemName: "heart.fill"))
+        heartImageView.contentMode = .scaleAspectFit
+        heartImageView.tintColor = .white
+        
+        button.addSubview(backgroundView)
+        backgroundView.snp.makeConstraints { make in
+            make.edges.equalTo(button)
+        }
+
+        button.addSubview(heartImageView)
+        heartImageView.snp.makeConstraints { make in
+            make.center.equalTo(button)
+            make.width.height.equalTo(25)
+        }
+        return button
+    }()
+
+    
     private let rateLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
@@ -142,6 +173,7 @@ private extension FilmCardViewController{
         setupCoverImageView()
         setupRateLabel()
         setupYearLabel()
+        setupLikeButton()
         setupNameLabel()
         setupOrigNameLabel()
         setupGenresLabel()
@@ -207,10 +239,8 @@ private extension FilmCardViewController{
         
         contentView.snp.makeConstraints { make in
             make.width.height.top.equalTo(self.scrollView)
-            make.width.equalTo(self.scrollView)
+//            make.width.equalTo(self.scrollView)
             make.centerX.equalTo(scrollView)
-            
-            // Add this constraint to make the bottom of scrollView equal to the bottom of contentView
             make.bottom.equalTo(scrollView)
         }
     }
@@ -222,7 +252,7 @@ private extension FilmCardViewController{
             make.height.equalTo(coverImageView.snp.width)
         }
     }
-    
+
     func setupRateLabel() {
         contentView.addSubview(rateLabel)
         rateLabel.snp.makeConstraints { make in
@@ -235,6 +265,18 @@ private extension FilmCardViewController{
         yearLabel.snp.makeConstraints { make in
             make.right.top.equalTo(coverImageView).inset(16)
         }
+    }
+    
+    func setupLikeButton() {
+        contentView.addSubview(likeButton)
+        likeButton.snp.makeConstraints { make in
+            make.centerX.equalTo(coverImageView)
+            make.top.bottom.equalTo(rateLabel)
+            make.width.equalTo(likeButton.snp.height)
+        }
+        likeButton.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(likeButtonTapped))
+        likeButton.addGestureRecognizer(tapGesture)
     }
     
     func setupNameLabel() {
@@ -283,6 +325,7 @@ private extension FilmCardViewController{
         }
         descriptionButton.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
     }
+    
     func setupCollectionView() {
         contentView.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
@@ -295,6 +338,7 @@ private extension FilmCardViewController{
         collectionView.delegate = self.filmCardVCDelegate
     }
     
+    
     // MARK: - Action Methods
     
     @objc func buttonClicked() {
@@ -303,6 +347,18 @@ private extension FilmCardViewController{
         vc.modalPresentationStyle = .custom
         vc.transitioningDelegate = self.filmCardVCDelegate
         present(vc, animated: true, completion: nil)
+    }
+    
+    @objc func likeButtonTapped() {
+        guard let heartImageView = likeButton.subviews.compactMap({ $0 as? UIImageView }).first else { return }
+
+        heartImageView.tintColor = (heartImageView.tintColor == .white) ? .red : .white
+        let animation = CABasicAnimation(keyPath: "transform.scale")
+        animation.duration = 0.2
+        animation.fromValue = 0.8
+        animation.toValue = 1.25
+        animation.autoreverses = true
+        heartImageView.layer.add(animation, forKey: "splashAnimation")
     }
 }
 

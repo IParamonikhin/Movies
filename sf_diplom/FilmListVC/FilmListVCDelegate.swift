@@ -1,5 +1,5 @@
 //
-//  MainVCDelegate.swift
+//  FilmListVCDelegate.swift
 //  sf_diplom
 //
 //  Created by Иван on 15.12.2023.
@@ -14,11 +14,17 @@ class FilmListVCDelegate: NSObject, UINavigationControllerDelegate {
     
     private var navigationController: UINavigationController?
     private var model: Model!
+    private var collectionView: UICollectionView?
 
     init(model: Model, navigationController: UINavigationController) {
         self.model = model
         self.navigationController = navigationController
     }
+
+    func setCollectionView(_ collectionView: UICollectionView) {
+        self.collectionView = collectionView
+    }
+
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
@@ -35,17 +41,27 @@ extension FilmListVCDelegate: UICollectionViewDelegateFlowLayout {
 // MARK: - UIScrollViewDelegate
 
 extension FilmListVCDelegate: UIScrollViewDelegate {
-
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y + scrollView.frame.height >= scrollView.contentSize.height {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let screenHeight = scrollView.frame.size.height
+
+        // Check if the user has scrolled to the bottom
+        if offsetY + screenHeight >= contentHeight {
             // Load more data
-            // uploadData()
+            model.loadMoreData(success: {
+                // Handle success if needed (e.g., reload collection view)
+                self.collectionView?.reloadData()
+            }, failure: { error in
+                // Handle failure if needed
+                print("Failed to load more data: \(error)")
+            })
         }
     }
 }
-
-// MARK: - UICollectionViewDelegate
-
+    // MARK: - UICollectionViewDelegate
+    
 extension FilmListVCDelegate: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         model.requestFilmCard(id: model.films[indexPath.row].kinopoiskId, success: {
@@ -60,16 +76,17 @@ extension FilmListVCDelegate: UICollectionViewDelegate {
         })
     }
 }
-
-// MARK: - UISearchBarDelegate
-
+    
+    // MARK: - UISearchBarDelegate
+    
 extension FilmListVCDelegate: UISearchBarDelegate {
-
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
     }
-
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
         searchBar.resignFirstResponder()
     }
 }
+
