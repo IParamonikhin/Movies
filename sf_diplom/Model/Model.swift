@@ -36,7 +36,6 @@ class Model {
 
     lazy var api: KinopoiskAPI = {
         return KinopoiskAPI()
-        
     }()
 
     var filmCard: FilmCardModel?
