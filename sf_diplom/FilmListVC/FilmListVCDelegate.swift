@@ -48,16 +48,16 @@ extension FilmListVCDelegate: UIScrollViewDelegate {
         let screenHeight = scrollView.frame.size.height
 
         // Check if the user has scrolled to the bottom
-        if offsetY + screenHeight >= contentHeight {
-            // Load more data
-            model.loadMoreData(success: {
-                // Handle success if needed (e.g., reload collection view)
-                self.collectionView?.reloadData()
-            }, failure: { error in
-                // Handle failure if needed
-                print("Failed to load more data: \(error)")
-            })
-        }
+//        if offsetY + screenHeight >= contentHeight {
+//            // Load more data
+//            model.loadMoreData(success: {
+//                // Handle success if needed (e.g., reload collection view)
+//                self.collectionView?.reloadData()
+//            }, failure: { error in
+//                // Handle failure if needed
+//                print("Failed to load more data: \(error)")
+//            })
+//        }
     }
 }
     // MARK: - UICollectionViewDelegate
