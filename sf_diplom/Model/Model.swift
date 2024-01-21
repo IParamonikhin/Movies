@@ -35,7 +35,7 @@ class Model {
     var filmListStat = FilmListLoadingStatistic()
 
     lazy var api: KinopoiskAPI = {
-        return KinopoiskAPI()56565
+        return KinopoiskAPI()
     }()
 
     var filmCard: FilmCardModel?
