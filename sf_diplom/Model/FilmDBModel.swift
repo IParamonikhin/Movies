@@ -7,35 +7,42 @@
 
 import Foundation
 import SwiftyJSON
+import RealmSwift
 
-struct Genres {
-    var genre: String
+class GenreObject: Object {
+    @objc dynamic var genre: String = ""
     
-    init(genresDictionary: JSON) {
+    convenience init(genresDictionary: JSON) {
+        self.init()
         genre = genresDictionary["genre"].stringValue
     }
 }
 
-struct Images {
-    var imageUrl: String
-    var previewUrl: String
+class ImageObject: Object {
+    @objc dynamic var imageUrl: String = ""
+    @objc dynamic var previewUrl: String = ""
     
-    init(imagesDictionary: JSON) {
+    convenience init(imagesDictionary: JSON) {
+        self.init()
         imageUrl = imagesDictionary["imageUrl"].stringValue
         previewUrl = imagesDictionary["previewUrl"].stringValue
     }
 }
 
-
-struct Films {
-    var kinopoiskId: Int
-    var nameRu: String
-    var ratingKinopoisk: Double
-    var year: Int
-    var posterUrlPreview: String
-    var favorite: Bool
+class FilmObject: Object {
+    @objc dynamic var kinopoiskId: Int = 0
+    @objc dynamic var nameRu: String = ""
+    @objc dynamic var ratingKinopoisk: Double = 0.0
+    @objc dynamic var year: Int = 0
+    @objc dynamic var posterUrlPreview: String = ""
+    @objc dynamic var favorite: Bool = false
     
-    init(filmDictionary: JSON) {
+    override static func primaryKey() -> String? {
+          return "kinopoiskId"
+      }
+
+    convenience init(filmDictionary: JSON) {
+        self.init()
         kinopoiskId = filmDictionary["kinopoiskId"].intValue
         nameRu = filmDictionary["nameRu"].stringValue
         ratingKinopoisk = filmDictionary["ratingKinopoisk"].doubleValue
@@ -43,23 +50,33 @@ struct Films {
         posterUrlPreview = filmDictionary["posterUrlPreview"].stringValue
         favorite = false
     }
+    
+    func convertToFilmCellData() -> FilmCellData {
+        let imgUrl = URL(string: self.posterUrlPreview)
+        return FilmCellData(imgUrl: imgUrl, name: self.nameRu, rate: "\(self.ratingKinopoisk)", year: "\(self.year)")
+    }
 }
 
-struct FilmCardModel {
-    var kinopoiskId: Int
-    var nameRu: String
-    var nameOriginal: String
-    var posterUrl: String
-    var coverUrl: String
-    var ratingKinopoisk: Double
-    var year: Int
-    var filmLength: Int
-    var description: String
-    var shortDescription: String
-    var genres: [Genres]
-    var images: [Images]
+class FilmCardObject: Object {
+    @objc dynamic var kinopoiskId: Int = 0
+    @objc dynamic var nameRu: String = ""
+    @objc dynamic var nameOriginal: String = ""
+    @objc dynamic var posterUrl: String = ""
+    @objc dynamic var coverUrl: String = ""
+    @objc dynamic var ratingKinopoisk: Double = 0.0
+    @objc dynamic var year: Int = 0
+    @objc dynamic var filmLength: Int = 0
+    @objc dynamic var filmDescription: String = ""
+    @objc dynamic var shortDescription: String = ""
+    var genres: List<GenreObject> = List<GenreObject>()
+    var images: List<ImageObject> = List<ImageObject>()
     
-    init(filmCadrDictionary: JSON, imagesDictionary: JSON) {
+    override static func primaryKey() -> String? {
+          return "kinopoiskId"
+      }
+    
+    convenience init(filmCadrDictionary: JSON, imagesDictionary: JSON) {
+        self.init()
         kinopoiskId = filmCadrDictionary["kinopoiskId"].intValue
         nameRu = filmCadrDictionary["nameRu"].stringValue
         nameOriginal = filmCadrDictionary["nameOriginal"].stringValue
@@ -68,9 +85,17 @@ struct FilmCardModel {
         ratingKinopoisk = filmCadrDictionary["ratingKinopoisk"].doubleValue
         year = filmCadrDictionary["year"].intValue
         filmLength = filmCadrDictionary["filmLength"].intValue
-        description = filmCadrDictionary["description"].stringValue
+        filmDescription = filmCadrDictionary["description"].stringValue 
         shortDescription = filmCadrDictionary["shortDescription"].stringValue
-        genres = filmCadrDictionary["genres"].arrayValue.map { Genres(genresDictionary: $0) }
-        images = imagesDictionary["items"].arrayValue.map { Images(imagesDictionary: $0) }
+
+        for genreJSON in filmCadrDictionary["genres"].arrayValue {
+            let genreObject = GenreObject(genresDictionary: genreJSON)
+            genres.append(genreObject)
+        }
+
+        for imageJSON in imagesDictionary["items"].arrayValue {
+            let imageObject = ImageObject(imagesDictionary: imageJSON)
+            images.append(imageObject)
+        }
     }
 }

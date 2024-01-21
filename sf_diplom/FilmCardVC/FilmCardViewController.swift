@@ -6,7 +6,6 @@
 
 import UIKit
 import SDWebImage
-import AVKit
 
 class FilmCardViewController: UIViewController {
 
@@ -14,13 +13,10 @@ class FilmCardViewController: UIViewController {
 
     var id: Int?
     var model: Model?
-    var filmCard: FilmCardModel?
+    var filmCard: FilmCardObject?
 
     private var filmCardVCDelegate: FilmCardVCDelegate?
     private var filmCardVCDataSource: FilmCardVCDataSource?
-    
-    private var avPlayer: AVPlayer?
-    private var avPlayerViewController: AVPlayerViewController?
 
     private let scrollView: UIScrollView = {
         let scroll = UIScrollView()
@@ -157,7 +153,7 @@ class FilmCardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         filmCardVCDelegate = FilmCardVCDelegate(model: self.model!)
-        filmCardVCDataSource = FilmCardVCDataSource(images: filmCard!.images)
+        filmCardVCDataSource = FilmCardVCDataSource(images: Array(filmCard!.images))
         setupUI()
         configure()
     }
@@ -190,7 +186,7 @@ private extension FilmCardViewController{
         setYearText(year: filmCard.year)
         setNameText(name: filmCard.nameRu)
         setOrigNameText(name: filmCard.nameOriginal)
-        setGenresText(genres: filmCard.genres)
+        setGenresText(genres: Array(filmCard.genres))
         setDescriptionText(description: filmCard.description)
     }
     
@@ -217,7 +213,12 @@ private extension FilmCardViewController{
         origNameLabel.text = name
     }
     
-    func setGenresText(genres: [Genres]) {
+//    func setGenresText(genres: [Genres]) {
+//        let text = genres.map { $0.genre.capitalized }.joined(separator: ", ")
+//        genresLabel.text = text
+//    }
+    
+    func setGenresText(genres: [GenreObject]) {
         let text = genres.map { $0.genre.capitalized }.joined(separator: ", ")
         genresLabel.text = text
     }

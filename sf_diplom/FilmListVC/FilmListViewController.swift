@@ -14,17 +14,31 @@ class FilmListViewController: UIViewController, FilmListDisplaying {
     var filmListDataSource: FilmListVCDataSource?
     var model = Model()
 
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//        initializeFilmList()
+//
+//        model.requestFilmList {
+//            self.collectionView.reloadData()
+//        } failure: { error in
+//            print("Failed to load film list: \(error)")
+//        }
+//    }
+  
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initializeFilmList()
 
-        model.requestFilmList {
+        model.requestAllPagesAndUpdateRealm {
+            // Reload collection view with data from Realm
             self.collectionView.reloadData()
         } failure: { error in
-            print("Failed to load film list: \(error)")
+            print("Failed to load film list and update Realm: \(error)")
         }
     }
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

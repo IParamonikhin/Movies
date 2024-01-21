@@ -50,13 +50,13 @@ extension FilmListVCDelegate: UIScrollViewDelegate {
         // Check if the user has scrolled to the bottom
         if offsetY + screenHeight >= contentHeight {
             // Load more data
-            model.loadMoreData(success: {
-                // Handle success if needed (e.g., reload collection view)
-                self.collectionView?.reloadData()
-            }, failure: { error in
-                // Handle failure if needed
-                print("Failed to load more data: \(error)")
-            })
+//            model.loadMoreData(success: {
+//                // Handle success if needed (e.g., reload collection view)
+//                self.collectionView?.reloadData()
+//            }, failure: { error in
+//                // Handle failure if needed
+//                print("Failed to load more data: \(error)")
+//            })
         }
     }
 }
@@ -64,10 +64,12 @@ extension FilmListVCDelegate: UIScrollViewDelegate {
     
 extension FilmListVCDelegate: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        model.requestFilmCard(id: model.films[indexPath.row].kinopoiskId, success: {
+        let kinopoiskId = model.filmCellData(at: indexPath.row).id
+
+        model.getFilmByIdFromRealmOrAPI(id: kinopoiskId, success: {
             let vc = FilmCardViewController()
             vc.model = self.model
-            vc.filmCard = self.model.filmCard
+            vc.filmCard = self.model.getFilmFromRealmById(id: kinopoiskId)
             vc.modalPresentationStyle = .fullScreen
             self.navigationController?.navigationBar.tintColor = .white
             self.navigationController?.pushViewController(vc, animated: true)
@@ -75,7 +77,9 @@ extension FilmListVCDelegate: UICollectionViewDelegate {
             print("Failed to load film card: \(error)")
         })
     }
+
 }
+
     
     // MARK: - UISearchBarDelegate
     

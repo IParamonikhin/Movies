@@ -12,5 +12,6 @@ target 'sf_diplom' do
 	pod 'SwiftyJSON'
     	pod 'SnapKit', '~>5.6.0'
 	pod 'MarqueeLabel/Swift'
-
+	pod 'ObjectMapper'
+	pod 'AlamofireObjectMapper'
 end
