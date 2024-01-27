@@ -15,7 +15,6 @@ struct KinopoiskAPI {
         case filmList
         case filmCard(id: Int)
         case filmImages(id: Int)
-        case filmTrailers(id: Int)
 
         var path: String {
             switch self {
@@ -25,8 +24,6 @@ struct KinopoiskAPI {
                 return "/films/\(id)"
             case .filmImages(let id):
                 return "/films/\(id)/images?type=STILL"
-            case .filmTrailers(let id):
-                return "/films/\(id)/videos"
             }
         }
     }

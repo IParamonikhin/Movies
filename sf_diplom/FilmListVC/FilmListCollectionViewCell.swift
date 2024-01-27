@@ -24,6 +24,31 @@ class FilmListCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
+    private let likeButton: UIButton = {
+        let button = UIButton()
+
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        backgroundView.layer.cornerRadius = 4
+        backgroundView.clipsToBounds = true
+
+        let heartImageView = UIImageView(image: UIImage(systemName: "heart.fill"))
+        heartImageView.contentMode = .scaleAspectFit
+        heartImageView.tintColor = .white
+        
+        button.addSubview(backgroundView)
+        backgroundView.snp.makeConstraints { make in
+            make.edges.equalTo(button)
+        }
+
+        button.addSubview(heartImageView)
+        heartImageView.snp.makeConstraints { make in
+            make.center.equalTo(button)
+            make.width.height.equalTo(17)
+        }
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initialize()
@@ -42,7 +67,7 @@ class FilmListCollectionViewCell: UICollectionViewCell {
     }
 }
 private extension FilmListCollectionViewCell {
-
+    
     // Constants
     private struct Constants {
         static let contentInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
@@ -52,12 +77,12 @@ private extension FilmListCollectionViewCell {
         static let shadowRadius: CGFloat = 5.0
         static let shadowOpacity: Float = 2.5
     }
-
+    
     func initialize() {
         configureAppearance()
         setupConstraints()
     }
-
+    
     func configureAppearance() {
         contentView.backgroundColor = UIColor(named: "BackgroundColor")
         contentView.layer.cornerRadius = Constants.cornerRadius
@@ -68,11 +93,12 @@ private extension FilmListCollectionViewCell {
         contentView.layer.shadowColor = UIColor(named: "BorderShadowColor")?.cgColor
         contentView.layer.shadowOpacity = Constants.shadowOpacity
         contentView.layer.masksToBounds = false
-
+        
         contentView.addSubview(imageView)
         contentView.addSubview(nameLabel)
         contentView.addSubview(rateLabel)
         contentView.addSubview(yearLabel)
+        contentView.addSubview(likeButton)
         
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = Constants.cornerRadius
@@ -86,38 +112,67 @@ private extension FilmListCollectionViewCell {
         rateLabel.backgroundColor = .black.withAlphaComponent(0.5)
         rateLabel.layer.cornerRadius = 4
         rateLabel.clipsToBounds = true
+
         
         yearLabel.textColor = .white
         yearLabel.backgroundColor = .black.withAlphaComponent(0.5)
         yearLabel.layer.cornerRadius = 4
         yearLabel.clipsToBounds = true
+        
+        likeButton.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(likeButtonTapped))
+        likeButton.addGestureRecognizer(tapGesture)
+        
     }
-
+    
     func setupConstraints() {
         contentView.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(Constants.contentInsets)
         }
-
+        
         imageView.snp.makeConstraints { make in
             make.top.equalTo(contentView.snp.top)
             make.right.equalTo(contentView.snp.right)
             make.left.equalTo(contentView.snp.left)
             make.height.equalTo(contentView.snp.height).multipliedBy(0.85)
         }
-
+        
         nameLabel.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(12)
             make.top.equalTo(imageView.snp.bottom).offset(5)
         }
-
+        
         rateLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(8)
-            make.left.top.equalToSuperview().inset(8)
+            make.left.equalToSuperview().inset(8)
+            make.height.equalTo(20)
         }
 
+        
         yearLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(8)
             make.right.top.equalToSuperview().inset(8)
+            make.height.equalTo(rateLabel.snp.height)
+        }
+        
+        likeButton.snp.makeConstraints { make in
+            make.centerX.equalTo(imageView)
+            make.top.equalTo(imageView.snp.top).inset(8)
+            make.height.equalTo(yearLabel.snp.height)
+            make.width.equalTo(likeButton.snp.height)
         }
     }
+    
+    @objc func likeButtonTapped() {
+        guard let heartImageView = likeButton.subviews.compactMap({ $0 as? UIImageView }).first else { return }
+
+        heartImageView.tintColor = (heartImageView.tintColor == .white) ? .red : .white
+        let animation = CABasicAnimation(keyPath: "transform.scale")
+        animation.duration = 0.2
+        animation.fromValue = 0.8
+        animation.toValue = 1.25
+        animation.autoreverses = true
+        heartImageView.layer.add(animation, forKey: "splashAnimation")
+    }
 }
+
