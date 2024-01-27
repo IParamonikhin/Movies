@@ -244,7 +244,6 @@ private extension FilmCardViewController{
         
         contentView.snp.makeConstraints { make in
             make.width.height.top.equalTo(self.scrollView)
-//            make.width.equalTo(self.scrollView)
             make.centerX.equalTo(scrollView)
             make.bottom.equalTo(scrollView)
         }
@@ -363,7 +362,6 @@ private extension FilmCardViewController{
         let newFavoriteState = !isFavorite
         isFavorite = newFavoriteState
         heartImageView.tintColor = newFavoriteState ? .red : .white
-        // Update the favorite property in the FilmObject in Realm
         do {
             let realm = try Realm()
             try realm.write {
@@ -373,7 +371,6 @@ private extension FilmCardViewController{
             print("Error updating favorite state: \(error)")
         }
         
-        // Add animation
         let animation = CABasicAnimation(keyPath: "transform.scale")
         animation.duration = 0.2
         animation.fromValue = 0.8

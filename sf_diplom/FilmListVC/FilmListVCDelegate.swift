@@ -47,8 +47,6 @@ extension FilmListVCDelegate: UIScrollViewDelegate {
         let contentHeight = scrollView.contentSize.height
         let screenHeight = scrollView.frame.size.height
 
-        // Check if the user has scrolled to the bottom
-
     }
 }
     // MARK: - UICollectionViewDelegate
@@ -58,13 +56,10 @@ extension FilmListVCDelegate: UICollectionViewDelegate {
         var kinopoiskId = Int()
         var isFavorite = Bool()
         
-        // Assuming you have a FilmObject class in Realm
         if let filmObject = model.getFilmFromRealm(at: indexPath.row) {
-            // Film found in Realm, use its kinopoiskId
             kinopoiskId = filmObject.kinopoiskId
             isFavorite = filmObject.isFavorite
         } else {
-            // Film not found in Realm, handle accordingly
             print("Film not found in Realm at index: \(indexPath.row)")
             return
         }

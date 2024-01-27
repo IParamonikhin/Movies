@@ -16,25 +16,16 @@ class FavoritesViewController: UIViewController, FilmListDisplaying {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         initializeFilmList()
         setupFilmListCollectionView()
-
-        // Load favorite films from Realm
-//        if let favoriteFilms = getFavoriteFilmsFromRealm() {
-//            // Populate the collection view with favorite films
-//            self.favoritesDataSource?.films = favoriteFilms
-            self.collectionView.reloadData()
-//        } else {
-//            print("Failed to load favorite films from Realm.")
-//        }
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
         
-        // Reload collection view data every time the screen appears
         collectionView.reloadData()
     }
 

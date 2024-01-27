@@ -183,7 +183,6 @@ private extension FilmListCollectionViewCell {
         let newFavoriteState = !isFavorite
         isFavorite = newFavoriteState
         heartImageView.tintColor = newFavoriteState ? .red : .white
-        // Update the favorite property in the FilmObject in Realm
         do {
             let realm = try Realm()
             try realm.write {
@@ -207,7 +206,6 @@ private extension FilmListCollectionViewCell {
 }
 extension FilmListCollectionViewCell: CAAnimationDelegate {
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        // Animation finished, reload collection view
         if let collectionView = superview as? UICollectionView {
             collectionView.reloadData()
         }

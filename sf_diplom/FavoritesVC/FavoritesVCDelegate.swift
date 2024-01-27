@@ -46,18 +46,8 @@ extension FavoritesVCDelegate: UIScrollViewDelegate {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
         let screenHeight = scrollView.frame.size.height
-
-        // Check if the user has scrolled to the bottom
-        if offsetY + screenHeight >= contentHeight {
-            // Load more data
-//            model.loadMoreData(success: {
-//                // Handle success if needed (e.g., reload collection view)
-//                self.collectionView?.reloadData()
-//            }, failure: { error in
-//                // Handle failure if needed
-//                print("Failed to load more data: \(error)")
-//            })
-        }
+        
+        //TODO
     }
 }
     // MARK: - UICollectionViewDelegate
@@ -67,13 +57,10 @@ extension FavoritesVCDelegate: UICollectionViewDelegate {
         var kinopoiskId = Int()
         var isFavorite = Bool()
         
-        // Assuming you have a FilmObject class in Realm
         if let filmObject = model.getFavoritesFilmFromRealm(at: indexPath.row) {
-            // Film found in Realm, use its kinopoiskId
             kinopoiskId = filmObject.kinopoiskId
             isFavorite = filmObject.isFavorite
         } else {
-            // Film not found in Realm, handle accordingly
             print("Film not found in Realm at index: \(indexPath.row)")
             return
         }
