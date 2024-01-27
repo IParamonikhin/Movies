@@ -58,11 +58,12 @@ class FilmListCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(film: FilmCellData) {
-        nameLabel.text = film.name
-        rateLabel.text = " \(film.rate) "
-        yearLabel.text = " \(film.year) "
-        imageView.sd_setImage(with: film.imgUrl)
+    func configure(film: FilmObject) {
+        let filmCellData = film.convertToFilmCellData()
+        nameLabel.text = filmCellData.name
+        rateLabel.text = " \(filmCellData.rate) "
+        yearLabel.text = " \(filmCellData.year) "
+        imageView.sd_setImage(with: filmCellData.imgUrl)
     }
 }
 private extension FilmListCollectionViewCell {

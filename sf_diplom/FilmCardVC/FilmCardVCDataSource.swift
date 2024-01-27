@@ -10,9 +10,9 @@ import UIKit
 
 class FilmCardVCDataSource: NSObject, UICollectionViewDataSource{
     
-    var images: [Images]
+    var images: [ImageObject]
     
-    init(images: [Images]) {
+    init(images: [ImageObject]) {
         self.images = images
     }
     

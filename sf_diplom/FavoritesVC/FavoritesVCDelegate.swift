@@ -1,5 +1,5 @@
 //
-//  FilmListVCDelegate.swift
+//  FavoritesVCDelegate.swift
 //  sf_diplom
 //
 //  Created by Иван on 15.12.2023.
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class FilmListVCDelegate: NSObject, UINavigationControllerDelegate {
+class FavoritesVCDelegate: NSObject, UINavigationControllerDelegate {
     
     private let borderOffset: CGFloat = 8
     
@@ -29,7 +29,7 @@ class FilmListVCDelegate: NSObject, UINavigationControllerDelegate {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-extension FilmListVCDelegate: UICollectionViewDelegateFlowLayout {
+extension FavoritesVCDelegate: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.bounds.width / 2
@@ -40,7 +40,7 @@ extension FilmListVCDelegate: UICollectionViewDelegateFlowLayout {
 
 // MARK: - UIScrollViewDelegate
 
-extension FilmListVCDelegate: UIScrollViewDelegate {
+extension FavoritesVCDelegate: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
@@ -48,12 +48,21 @@ extension FilmListVCDelegate: UIScrollViewDelegate {
         let screenHeight = scrollView.frame.size.height
 
         // Check if the user has scrolled to the bottom
-
+        if offsetY + screenHeight >= contentHeight {
+            // Load more data
+//            model.loadMoreData(success: {
+//                // Handle success if needed (e.g., reload collection view)
+//                self.collectionView?.reloadData()
+//            }, failure: { error in
+//                // Handle failure if needed
+//                print("Failed to load more data: \(error)")
+//            })
+        }
     }
 }
     // MARK: - UICollectionViewDelegate
     
-extension FilmListVCDelegate: UICollectionViewDelegate {
+extension FavoritesVCDelegate: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         var kinopoiskId = Int()
         var isFavorite = Bool()
@@ -87,7 +96,7 @@ extension FilmListVCDelegate: UICollectionViewDelegate {
     
     // MARK: - UISearchBarDelegate
     
-extension FilmListVCDelegate: UISearchBarDelegate {
+extension FavoritesVCDelegate: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
     }
