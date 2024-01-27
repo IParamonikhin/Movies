@@ -7,6 +7,49 @@
 import UIKit
 import SnapKit
 
+//class FilmListViewController: UIViewController, FilmListDisplaying {
+//    func initializeFilmList() {
+//        <#code#>
+//    }
+//    
+//    func setupFilmListCollectionView() {
+//        <#code#>
+//    }
+//    
+//
+//    var collectionView: UICollectionView!
+//    var filmListDelegate: FilmListVCDelegate?
+//    var filmListDataSource: FilmListVCDataSource?
+//    var model = Model()
+//
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//        initializeFilmList(dataSource: filmListDataSource, delegate: filmListDelegate)
+//
+//        model.requestAllPagesAndUpdateRealm {
+//            // Reload collection view with data from Realm
+//            self.collectionView.reloadData()
+//        } failure: { error in
+//            print("Failed to load film list and update Realm: \(error)")
+//        }
+//    }
+//
+//    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        navigationController?.setNavigationBarHidden(true, animated: animated)
+//    }
+//
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        navigationController?.setNavigationBarHidden(false, animated: animated)
+//    }
+//    
+//}
+import UIKit
+import SnapKit
+
 class FilmListViewController: UIViewController, FilmListDisplaying {
 
     var collectionView: UICollectionView!
@@ -14,22 +57,11 @@ class FilmListViewController: UIViewController, FilmListDisplaying {
     var filmListDataSource: FilmListVCDataSource?
     var model = Model()
 
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        initializeFilmList()
-//
-//        model.requestFilmList {
-//            self.collectionView.reloadData()
-//        } failure: { error in
-//            print("Failed to load film list: \(error)")
-//        }
-//    }
-  
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initializeFilmList()
+        setupFilmListCollectionView()
 
         model.requestAllPagesAndUpdateRealm {
             // Reload collection view with data from Realm
@@ -39,7 +71,6 @@ class FilmListViewController: UIViewController, FilmListDisplaying {
         }
     }
 
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -49,5 +80,29 @@ class FilmListViewController: UIViewController, FilmListDisplaying {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-    
+
+    func initializeFilmList() {
+        view.backgroundColor = UIColor(named: "BackgroundColor")
+        filmListDataSource = FilmListVCDataSource(model: model)
+        filmListDelegate = FilmListVCDelegate(model: model, navigationController: navigationController!)
+    }
+
+    func setupFilmListCollectionView() {
+        let collectionViewLayout = UICollectionViewFlowLayout()
+        collectionViewLayout.scrollDirection = .vertical
+        collectionViewLayout.minimumInteritemSpacing = 0
+
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
+        view.addSubview(collectionView)
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.bottom.left.right.equalToSuperview()
+        }
+
+        collectionView.register(FilmListCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.backgroundColor = .none
+
+        collectionView.dataSource = filmListDataSource
+        collectionView.delegate = filmListDelegate
+    }
 }

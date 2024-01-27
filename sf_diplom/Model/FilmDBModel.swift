@@ -35,7 +35,7 @@ class FilmObject: Object {
     @objc dynamic var ratingKinopoisk: Double = 0.0
     @objc dynamic var year: Int = 0
     @objc dynamic var posterUrlPreview: String = ""
-    @objc dynamic var favorite: Bool = false
+    @objc dynamic var isFavorite: Bool = false
     
     override static func primaryKey() -> String? {
           return "kinopoiskId"
@@ -48,7 +48,7 @@ class FilmObject: Object {
         ratingKinopoisk = filmDictionary["ratingKinopoisk"].doubleValue
         year = filmDictionary["year"].intValue
         posterUrlPreview = filmDictionary["posterUrlPreview"].stringValue
-        favorite = false
+        isFavorite = false
     }
     
     func convertToFilmCellData() -> FilmCellData {

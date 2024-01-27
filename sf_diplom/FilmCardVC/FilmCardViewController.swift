@@ -6,6 +6,7 @@
 
 import UIKit
 import SDWebImage
+import RealmSwift
 
 class FilmCardViewController: UIViewController {
 
@@ -14,6 +15,7 @@ class FilmCardViewController: UIViewController {
     var id: Int?
     var model: Model?
     var filmCard: FilmCardObject?
+    var isFavorite: Bool!
 
     private var filmCardVCDelegate: FilmCardVCDelegate?
     private var filmCardVCDataSource: FilmCardVCDataSource?
@@ -49,6 +51,7 @@ class FilmCardViewController: UIViewController {
 
         let heartImageView = UIImageView(image: UIImage(systemName: "heart.fill"))
         heartImageView.contentMode = .scaleAspectFit
+        
         heartImageView.tintColor = .white
         
         button.addSubview(backgroundView)
@@ -185,9 +188,10 @@ private extension FilmCardViewController{
         setRateText(rate: filmCard.ratingKinopoisk)
         setYearText(year: filmCard.year)
         setNameText(name: filmCard.nameRu)
+        setLikeButtonColor()
         setOrigNameText(name: filmCard.nameOriginal)
         setGenresText(genres: Array(filmCard.genres))
-        setDescriptionText(description: filmCard.description)
+        setDescriptionText(description: filmCard.filmDescription)
     }
     
     func setRateText(rate: Double) {
@@ -205,6 +209,11 @@ private extension FilmCardViewController{
         yearLabel.text = " \(String(year)) "
     }
     
+    func setLikeButtonColor() {
+        guard let heartImageView = likeButton.subviews.compactMap({ $0 as? UIImageView }).first else { return }
+        heartImageView.tintColor = isFavorite ? .red : .white
+    }
+    
     func setNameText(name: String) {
         nameLabel.text = name
     }
@@ -212,11 +221,6 @@ private extension FilmCardViewController{
     func setOrigNameText(name: String) {
         origNameLabel.text = name
     }
-    
-//    func setGenresText(genres: [Genres]) {
-//        let text = genres.map { $0.genre.capitalized }.joined(separator: ", ")
-//        genresLabel.text = text
-//    }
     
     func setGenresText(genres: [GenreObject]) {
         let text = genres.map { $0.genre.capitalized }.joined(separator: ", ")
@@ -278,6 +282,7 @@ private extension FilmCardViewController{
         likeButton.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(likeButtonTapped))
         likeButton.addGestureRecognizer(tapGesture)
+        
     }
     
     func setupNameLabel() {
@@ -344,16 +349,35 @@ private extension FilmCardViewController{
     
     @objc func buttonClicked() {
         let vc = DescriptionViewController()
-        vc.descriptionString = filmCard?.description
+        vc.descriptionString = filmCard?.filmDescription
         vc.modalPresentationStyle = .custom
         vc.transitioningDelegate = self.filmCardVCDelegate
         present(vc, animated: true, completion: nil)
     }
     
     @objc func likeButtonTapped() {
-        guard let heartImageView = likeButton.subviews.compactMap({ $0 as? UIImageView }).first else { return }
+//        guard let heartImageView = likeButton.subviews.compactMap({ $0 as? UIImageView }).first,
+//              let filmId = model?.filmCard?.kinopoiskId,
+//              let film = model?.getFilmFromRealmById(id: filmId) else { return }
+        
+            guard let heartImageView = likeButton.subviews.compactMap({ $0 as? UIImageView }).first else { return }
+//            heartImageView.tintColor = isFavorite ? .red : .white
+        let film = model?.getFilmFromRealmById(id: self.filmCard!.kinopoiskId)
 
-        heartImageView.tintColor = (heartImageView.tintColor == .white) ? .red : .white
+        let newFavoriteState = !isFavorite
+        isFavorite = newFavoriteState
+        heartImageView.tintColor = newFavoriteState ? .red : .white
+        // Update the favorite property in the FilmObject in Realm
+        do {
+            let realm = try Realm()
+            try realm.write {
+                film!.isFavorite = newFavoriteState
+            }
+        } catch {
+            print("Error updating favorite state: \(error)")
+        }
+
+        // Add animation
         let animation = CABasicAnimation(keyPath: "transform.scale")
         animation.duration = 0.2
         animation.fromValue = 0.8
