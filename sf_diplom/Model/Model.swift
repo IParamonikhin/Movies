@@ -697,6 +697,28 @@ class Model {
         }
     }
     
+    func getFavoritesFilmFromRealm(at index: Int) -> FilmObject? {
+        do {
+            let realm = try Realm()
+
+            // Assuming you have a primary key for FilmObject and the primary key is an integer
+            let films = realm.objects(FilmObject.self).filter("isFavorite == true").sorted(byKeyPath: "ratingKinopoisk", ascending: false)
+
+            guard index < films.count else {
+                // Handle the case where the index is out of bounds
+                print("Index out of bounds: \(index)")
+                return nil
+            }
+
+            let filmObject = films[index]
+            return filmObject
+        } catch {
+            // Handle Realm errors
+            print("Error accessing Realm: \(error)")
+            return nil
+        }
+    }
+    
     func getFilmFromRealmById(id: Int) -> FilmObject? {
         do {
             let realm = try Realm()

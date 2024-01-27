@@ -53,7 +53,7 @@ class FilmObject: Object {
     
     func convertToFilmCellData() -> FilmCellData {
         let imgUrl = URL(string: self.posterUrlPreview)
-        return FilmCellData(imgUrl: imgUrl, name: self.nameRu, rate: "\(self.ratingKinopoisk)", year: "\(self.year)")
+        return FilmCellData(id: self.kinopoiskId, imgUrl: imgUrl, name: self.nameRu, rate: "\(self.ratingKinopoisk)", year: "\(self.year)")
     }
 }
 

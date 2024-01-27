@@ -74,6 +74,8 @@ class FilmListViewController: UIViewController, FilmListDisplaying {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+        collectionView.reloadData()
     }
 
     override func viewWillDisappear(_ animated: Bool) {

@@ -9,8 +9,13 @@ import UIKit
 import SnapKit
 import SDWebImage
 import MarqueeLabel
+import RealmSwift
 
 class FilmListCollectionViewCell: UICollectionViewCell {
+    
+    var isFavorite: Bool!
+    var model: Model!
+    var kinopoiskID: Int!
     
     private let nameLabel: MarqueeLabel = {
         let label = MarqueeLabel()
@@ -58,12 +63,19 @@ class FilmListCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(film: FilmObject) {
+    func configure(film: FilmObject, model: Model) {
         let filmCellData = film.convertToFilmCellData()
         nameLabel.text = filmCellData.name
         rateLabel.text = " \(filmCellData.rate) "
         yearLabel.text = " \(filmCellData.year) "
         imageView.sd_setImage(with: filmCellData.imgUrl)
+        isFavorite = film.isFavorite
+        
+        self.model = model
+        self.kinopoiskID = filmCellData.id
+        
+        guard let heartImageView = likeButton.subviews.compactMap({ $0 as? UIImageView }).first else { return }
+        heartImageView.tintColor = isFavorite ? .red : .white
     }
 }
 private extension FilmListCollectionViewCell {
@@ -164,15 +176,40 @@ private extension FilmListCollectionViewCell {
     }
     
     @objc func likeButtonTapped() {
+        
         guard let heartImageView = likeButton.subviews.compactMap({ $0 as? UIImageView }).first else { return }
-
-        heartImageView.tintColor = (heartImageView.tintColor == .white) ? .red : .white
+        let film = model.getFilmFromRealmById(id: self.kinopoiskID)
+        
+        let newFavoriteState = !isFavorite
+        isFavorite = newFavoriteState
+        heartImageView.tintColor = newFavoriteState ? .red : .white
+        // Update the favorite property in the FilmObject in Realm
+        do {
+            let realm = try Realm()
+            try realm.write {
+                film!.isFavorite = newFavoriteState
+            }
+        } catch {
+            print("Error updating favorite state: \(error)")
+        }
+        
+        // Add animation
         let animation = CABasicAnimation(keyPath: "transform.scale")
         animation.duration = 0.2
         animation.fromValue = 0.8
         animation.toValue = 1.25
         animation.autoreverses = true
+        animation.delegate = self 
         heartImageView.layer.add(animation, forKey: "splashAnimation")
+        
+    }
+    
+}
+extension FilmListCollectionViewCell: CAAnimationDelegate {
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        // Animation finished, reload collection view
+        if let collectionView = superview as? UICollectionView {
+            collectionView.reloadData()
+        }
     }
 }
-

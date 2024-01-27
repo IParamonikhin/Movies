@@ -44,7 +44,7 @@ class FavoritesVCDataSource: NSObject, UICollectionViewDataSource {
         // Check if the filmObject is not nil
         if let filmObject = filmObject {
             // Configure the cell using the data from Realm
-            cell.configure(film: filmObject)
+            cell.configure(film: filmObject, model: model)
         } else {
             // Handle the case where data is not available
             // For example, you can set default values or display an error message

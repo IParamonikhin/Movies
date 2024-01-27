@@ -68,7 +68,7 @@ extension FavoritesVCDelegate: UICollectionViewDelegate {
         var isFavorite = Bool()
         
         // Assuming you have a FilmObject class in Realm
-        if let filmObject = model.getFilmFromRealm(at: indexPath.row) {
+        if let filmObject = model.getFavoritesFilmFromRealm(at: indexPath.row) {
             // Film found in Realm, use its kinopoiskId
             kinopoiskId = filmObject.kinopoiskId
             isFavorite = filmObject.isFavorite

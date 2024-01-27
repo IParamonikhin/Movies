@@ -356,14 +356,10 @@ private extension FilmCardViewController{
     }
     
     @objc func likeButtonTapped() {
-//        guard let heartImageView = likeButton.subviews.compactMap({ $0 as? UIImageView }).first,
-//              let filmId = model?.filmCard?.kinopoiskId,
-//              let film = model?.getFilmFromRealmById(id: filmId) else { return }
         
-            guard let heartImageView = likeButton.subviews.compactMap({ $0 as? UIImageView }).first else { return }
-//            heartImageView.tintColor = isFavorite ? .red : .white
+        guard let heartImageView = likeButton.subviews.compactMap({ $0 as? UIImageView }).first else { return }
         let film = model?.getFilmFromRealmById(id: self.filmCard!.kinopoiskId)
-
+        
         let newFavoriteState = !isFavorite
         isFavorite = newFavoriteState
         heartImageView.tintColor = newFavoriteState ? .red : .white
@@ -376,7 +372,7 @@ private extension FilmCardViewController{
         } catch {
             print("Error updating favorite state: \(error)")
         }
-
+        
         // Add animation
         let animation = CABasicAnimation(keyPath: "transform.scale")
         animation.duration = 0.2
