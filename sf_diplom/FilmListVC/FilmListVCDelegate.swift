@@ -47,7 +47,7 @@ extension FilmListVCDelegate: UIScrollViewDelegate {
         let contentHeight = scrollView.contentSize.height
         let screenHeight = scrollView.frame.size.height
 
-//        // Check if the user has scrolled to the bottom
+        // Check if the user has scrolled to the bottom
 //        if offsetY + screenHeight >= contentHeight {
 //            // Load more data
 //            model.loadMoreData(success: {
