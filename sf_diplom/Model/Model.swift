@@ -33,6 +33,7 @@ class Model {
     }()
     
     var films: [FilmObject] = []
+    var searchedFilms: [FilmObject] = []
     
     // MARK: - Film Card
     
@@ -119,14 +120,14 @@ class Model {
             print(realm.configuration.fileURL)
             
             try realm.write {
-                if let mapperFilms = json["items"].array {
+                if let mapperFilms = json["films"].array {
                     for filmJson in mapperFilms {
-                        guard let kinopoiskId = filmJson["kinopoiskId"].int else {
+                        guard let kinopoiskId = filmJson["filmId"].int else {
                             continue
                         }
                         if let existingFilm = realm.object(ofType: FilmObject.self, forPrimaryKey: kinopoiskId) {
                             existingFilm.nameRu = filmJson["nameRu"].stringValue
-                            existingFilm.ratingKinopoisk = filmJson["ratingKinopoisk"].doubleValue
+                            existingFilm.ratingKinopoisk = filmJson["rating"].doubleValue
                             existingFilm.year = filmJson["year"].intValue
                             existingFilm.posterUrlPreview = filmJson["posterUrlPreview"].stringValue
                             
@@ -136,6 +137,16 @@ class Model {
                         }
                     }
                 }
+            }
+        } catch {
+            print("Error updating Realm: \(error)")
+        }
+    }
+    func updateRealm(with filmObject: FilmObject) {
+        let realm = try! Realm()
+        do {
+            try realm.write {
+                realm.add(filmObject, update: .modified)
             }
         } catch {
             print("Error updating Realm: \(error)")
@@ -164,10 +175,10 @@ class Model {
     // MARK: - Statistic Update
     
     private func updateFilmListStat(_ json: JSON) {
-        filmListStat.pages = json["totalPages"].intValue
+        filmListStat.pages = json["pagesCount"].intValue
         filmListStat.totalCount = json["total"].intValue
         
-        if let mapperFilms = json["items"].array {
+        if let mapperFilms = json["films"].array {
             filmListStat.loadedCount += mapperFilms.count
         }
     }
@@ -380,4 +391,38 @@ class Model {
             return nil
         }
     }
+    
+    func searchFilms(keyword: String, success: @escaping ([FilmObject]) -> Void, failure: @escaping (Error) -> Void) {
+        guard let encodedKeyword = keyword.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            failure(APIError.invalidURL)
+            return
+        }
+        
+        guard let url = api.buildURL(for: .searchByKeyword(keyword: encodedKeyword)) else {
+            failure(APIError.invalidURL)
+            return
+        }
+        
+        requestJSON(url: url, success: { json in
+            guard let filmsJSON = json["films"].array else {
+                failure(APIError.invalidResponse)
+                return
+            }
+            
+            var films: [FilmObject] = []
+            
+            for filmJSON in filmsJSON {
+                let film = FilmObject(filmDictionary: filmJSON)
+                films.append(film)
+            }
+            // Update the searchedFilms array in the model
+            self.searchedFilms = films
+            
+            success(films)
+        }, failure: { error in
+            failure(error)
+        })
+    }
+    
+
 }

@@ -16,6 +16,7 @@ class FilmListCollectionViewCell: UICollectionViewCell {
     var isFavorite: Bool!
     var model: Model!
     var kinopoiskID: Int!
+    var filmCellData: FilmCellData!
     
     private let nameLabel: MarqueeLabel = {
         let label = MarqueeLabel()
@@ -64,7 +65,7 @@ class FilmListCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(film: FilmObject, model: Model) {
-        let filmCellData = film.convertToFilmCellData()
+        filmCellData = film.convertToFilmCellData()
         nameLabel.text = filmCellData.name
         rateLabel.text = " \(filmCellData.rate) "
         yearLabel.text = " \(filmCellData.year) "
@@ -176,32 +177,56 @@ private extension FilmListCollectionViewCell {
     }
     
     @objc func likeButtonTapped() {
-        
         guard let heartImageView = likeButton.subviews.compactMap({ $0 as? UIImageView }).first else { return }
-        let film = model.getFilmFromRealmById(id: self.kinopoiskID)
         
-        let newFavoriteState = !isFavorite
-        isFavorite = newFavoriteState
-        heartImageView.tintColor = newFavoriteState ? .red : .white
+        // Get the film from Realm by its ID
+        guard var film = model.getFilmFromRealmById(id: self.kinopoiskID) else {
+            // Film doesn't exist in Realm, so create a new FilmObject and add it
+            let newFilm = FilmObject()
+            newFilm.kinopoiskId = self.kinopoiskID
+            newFilm.isFavorite = false
+            newFilm.nameRu = filmCellData.name
+            newFilm.ratingKinopoisk = Double(filmCellData.rate) ?? 0.0
+            newFilm.year = Int(filmCellData.year) ?? 0
+            // Assuming you have the URL stored in FilmCellData as imgUrl
+            if let imgUrl = filmCellData.imgUrl {
+                newFilm.posterUrlPreview = imgUrl.absoluteString
+            }// Mark it as favorite
+            // You may need to set other properties of the newFilm object
+            
+            // Add the new film to Realm
+            model.updateRealm(with: newFilm)
+            
+            // Update UI accordingly
+            heartImageView.tintColor = .red // Assuming red color indicates favorite
+            return
+        }
+        
+        // Film already exists in Realm
+        let newFavoriteState = !film.isFavorite
+        
+        // Update the film's favorite state within a Realm write transaction
         do {
             let realm = try Realm()
             try realm.write {
-                film!.isFavorite = newFavoriteState
+                film.isFavorite = newFavoriteState
             }
         } catch {
             print("Error updating favorite state: \(error)")
         }
         
+        // Update UI accordingly
+        heartImageView.tintColor = newFavoriteState ? .red : .white
         // Add animation
         let animation = CABasicAnimation(keyPath: "transform.scale")
         animation.duration = 0.2
         animation.fromValue = 0.8
         animation.toValue = 1.25
         animation.autoreverses = true
-        animation.delegate = self 
+        animation.delegate = self
         heartImageView.layer.add(animation, forKey: "splashAnimation")
-        
     }
+
     
 }
 extension FilmListCollectionViewCell: CAAnimationDelegate {

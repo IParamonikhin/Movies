@@ -12,12 +12,21 @@ import SnapKit
 class DescriptionViewController: UIViewController {
 
     var descriptionString: String?
+    var imgUrl: String?
+    
+    private let logoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.layer.cornerRadius = 10
+        imageView.layer.masksToBounds = true
+        return imageView
+    }()
     
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = .systemFont(ofSize: 17)
-        label.textAlignment = .justified
+        label.textAlignment = .natural
         label.textColor = .white
         return label
     }()
@@ -52,6 +61,7 @@ class DescriptionViewController: UIViewController {
         initialize()
         addSwipeGesture()
         descriptionLabel.text = descriptionString
+        logoImageView.sd_setImage(with: URL(string: imgUrl!))
     }
     
 }
@@ -69,21 +79,29 @@ private extension DescriptionViewController {
         view.layer.masksToBounds = true
         view.addSubview(scrollView)
         view.addSubview(topLine)
+        view.addSubview(logoImageView)
         scrollView.addSubview(contentView)
         contentView.addSubview(descriptionLabel)
     }
     
     func setupConstraints() {
-        scrollView.snp.makeConstraints { make in
-            make.top.equalTo(topLine.snp.bottom).offset(5)
-            make.left.right.bottom.equalToSuperview()
-        }
         
         topLine.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(12)
             make.width.equalTo(75)
             make.height.equalTo(4)
+        }
+        
+        logoImageView.snp.makeConstraints { make in
+            make.top.equalTo(topLine.snp.bottom).offset(12)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(50)
+        }
+        
+        scrollView.snp.makeConstraints { make in
+            make.top.equalTo(logoImageView.snp.bottom).offset(5)
+            make.left.right.bottom.equalToSuperview()
         }
         
         contentView.snp.makeConstraints { make in

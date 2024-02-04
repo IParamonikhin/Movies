@@ -30,6 +30,8 @@
 		2C7F9D372B654CFF00F48993 /* FavoritesVCDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7F9D362B654CFF00F48993 /* FavoritesVCDataSource.swift */; };
 		2C7F9D392B654FF500F48993 /* FavoritesVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7F9D382B654FF500F48993 /* FavoritesVCDelegate.swift */; };
 		2CACA2542B52DFEE00553277 /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACA2532B52DFEE00553277 /* DescriptionViewController.swift */; };
+		2CAED3C42B6F948B00AC7407 /* SearchListVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAED3C32B6F948B00AC7407 /* SearchListVCDelegate.swift */; };
+		2CAED3C62B6F949C00AC7407 /* SearchListVCDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAED3C52B6F949C00AC7407 /* SearchListVCDataSource.swift */; };
 		83005A6ADBB09B106AF136B0 /* Pods_sf_diplom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC7057CA6F5EFAB2BBC0352B /* Pods_sf_diplom.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +61,8 @@
 		2C7F9D362B654CFF00F48993 /* FavoritesVCDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVCDataSource.swift; sourceTree = "<group>"; };
 		2C7F9D382B654FF500F48993 /* FavoritesVCDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesVCDelegate.swift; sourceTree = "<group>"; };
 		2CACA2532B52DFEE00553277 /* DescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
+		2CAED3C32B6F948B00AC7407 /* SearchListVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListVCDelegate.swift; sourceTree = "<group>"; };
+		2CAED3C52B6F949C00AC7407 /* SearchListVCDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListVCDataSource.swift; sourceTree = "<group>"; };
 		65C82E14C7864A74EA1A1C35 /* Pods-sf_diplom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sf_diplom.debug.xcconfig"; path = "Target Support Files/Pods-sf_diplom/Pods-sf_diplom.debug.xcconfig"; sourceTree = "<group>"; };
 		AC7057CA6F5EFAB2BBC0352B /* Pods_sf_diplom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sf_diplom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F54E734DE4B1D9BD8FD0CD16 /* Pods-sf_diplom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sf_diplom.release.xcconfig"; path = "Target Support Files/Pods-sf_diplom/Pods-sf_diplom.release.xcconfig"; sourceTree = "<group>"; };
@@ -138,6 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				2C0B96E52B5D0D6E00338BFD /* SearchViewController.swift */,
+				2CAED3C32B6F948B00AC7407 /* SearchListVCDelegate.swift */,
+				2CAED3C52B6F949C00AC7407 /* SearchListVCDataSource.swift */,
 			);
 			path = SearchVC;
 			sourceTree = "<group>";
@@ -317,6 +323,7 @@
 				2C7F9D392B654FF500F48993 /* FavoritesVCDelegate.swift in Sources */,
 				2CACA2542B52DFEE00553277 /* DescriptionViewController.swift in Sources */,
 				2C0B96E62B5D0D6E00338BFD /* SearchViewController.swift in Sources */,
+				2CAED3C42B6F948B00AC7407 /* SearchListVCDelegate.swift in Sources */,
 				2C05D3362B2B85740005B3F7 /* FilmCardViewController.swift in Sources */,
 				2C0609072B2B5C4E0078FF50 /* AppDelegate.swift in Sources */,
 				2C05D3582B2C477D0005B3F7 /* FilmListVCDelegate.swift in Sources */,
@@ -327,6 +334,7 @@
 				2C0B96E82B5D0D8D00338BFD /* FavoritesViewController.swift in Sources */,
 				2C0D045E2B46E2C4007FEAA7 /* FilmCardCollectionViewCell.swift in Sources */,
 				2C05D35C2B2C56000005B3F7 /* Model.swift in Sources */,
+				2CAED3C62B6F949C00AC7407 /* SearchListVCDataSource.swift in Sources */,
 				2C0D045A2B46E1C5007FEAA7 /* FilmCardVCDelegate.swift in Sources */,
 				2C05D33C2B2C2DCC0005B3F7 /* APIRequestConst.swift in Sources */,
 				2C0609092B2B5C4E0078FF50 /* SceneDelegate.swift in Sources */,

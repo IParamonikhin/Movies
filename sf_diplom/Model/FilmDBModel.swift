@@ -43,9 +43,9 @@ class FilmObject: Object {
 
     convenience init(filmDictionary: JSON) {
         self.init()
-        kinopoiskId = filmDictionary["kinopoiskId"].intValue
+        kinopoiskId = filmDictionary["filmId"].intValue
         nameRu = filmDictionary["nameRu"].stringValue
-        ratingKinopoisk = filmDictionary["ratingKinopoisk"].doubleValue
+        ratingKinopoisk = filmDictionary["rating"].doubleValue
         year = filmDictionary["year"].intValue
         posterUrlPreview = filmDictionary["posterUrlPreview"].stringValue
         isFavorite = false
@@ -63,6 +63,7 @@ class FilmCardObject: Object {
     @objc dynamic var nameOriginal: String = ""
     @objc dynamic var posterUrl: String = ""
     @objc dynamic var coverUrl: String = ""
+    @objc dynamic var logoUrl: String = ""
     @objc dynamic var ratingKinopoisk: Double = 0.0
     @objc dynamic var year: Int = 0
     @objc dynamic var filmLength: Int = 0
@@ -82,6 +83,7 @@ class FilmCardObject: Object {
         nameOriginal = filmCadrDictionary["nameOriginal"].stringValue
         posterUrl = filmCadrDictionary["posterUrl"].stringValue
         coverUrl = filmCadrDictionary["coverUrl"].stringValue
+        logoUrl = filmCadrDictionary["logoUrl"].stringValue
         ratingKinopoisk = filmCadrDictionary["ratingKinopoisk"].doubleValue
         year = filmCadrDictionary["year"].intValue
         filmLength = filmCadrDictionary["filmLength"].intValue

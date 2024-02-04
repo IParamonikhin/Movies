@@ -127,7 +127,7 @@ class FilmCardViewController: UIViewController {
         let label = UILabel()
         label.numberOfLines = 5
         label.font = .systemFont(ofSize: 17)
-        label.textAlignment = .justified
+        label.textAlignment = .natural
         label.textColor = .white
         return label
     }()
@@ -349,6 +349,7 @@ private extension FilmCardViewController{
     @objc func buttonClicked() {
         let vc = DescriptionViewController()
         vc.descriptionString = filmCard?.filmDescription
+        vc.imgUrl = filmCard?.logoUrl
         vc.modalPresentationStyle = .custom
         vc.transitioningDelegate = self.filmCardVCDelegate
         present(vc, animated: true, completion: nil)
