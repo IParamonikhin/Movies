@@ -24,7 +24,6 @@ class FilmListViewController: UIViewController, FilmListDisplaying {
         setupFilmListCollectionView()
 
         model.requestAllPagesAndUpdateRealm {
-            // Reload collection view with data from Realm
             self.collectionView.reloadData()
         } failure: { error in
             print("Failed to load film list and update Realm: \(error)")

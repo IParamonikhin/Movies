@@ -21,20 +21,9 @@ class SearchViewController: UIViewController, FilmListDisplaying {
         
         initializeFilmList()
         
-        // Initialize searchListDelegate
         searchListDelegate = SearchListVCDelegate(model: model, navigationController: self.navigationController!)
-        //           searchListDelegate?.setCollectionView(collectionView)
-        
-        // Initialize searchListDataSource
         searchListDataSource = SearchListVCDataSource(model: model)
         
-        //           model.requestFilmList {
-        //               self.collectionView.reloadData()
-        //           } failure: { error in
-        //               print("Failed to load film list: \(error)")
-        //           }
-        
-//        searchBar.placeholder = "Search Films"
         if let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField {
             let placeholderText = NSAttributedString(string: "Search Films", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "BackgroundColor") ?? UIColor.gray])
             textFieldInsideSearchBar.attributedPlaceholder = placeholderText
@@ -52,7 +41,6 @@ class SearchViewController: UIViewController, FilmListDisplaying {
         navigationItem.titleView = searchBar
         setupNavigationBar()
         
-        // Now call searchFilms after initializing collectionView
         setupFilmListCollectionView()
     }
        
@@ -71,12 +59,9 @@ class SearchViewController: UIViewController, FilmListDisplaying {
     
     override func viewWillDisappear(_ animated: Bool) {
          super.viewWillDisappear(animated)
-         // Clear the searched films when the view is about to disappear
-//         model.searchedFilms.removeAll()
      }
     
     func initializeFilmList() {
-        // Setup collection view and other film list components
         setupFilmListCollectionView()
     }
     

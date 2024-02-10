@@ -41,7 +41,6 @@ class HalfScreenPresentationController: UIPresentationController {
     override func presentationTransitionWillBegin() {
         super.presentationTransitionWillBegin()
         
-        // Add blur effect
         let blurEffect = UIBlurEffect(style: .light)
         visualEffectView = UIVisualEffectView(effect: blurEffect)
         visualEffectView?.frame = containerView?.bounds ?? CGRect.zero
@@ -51,7 +50,6 @@ class HalfScreenPresentationController: UIPresentationController {
     override func dismissalTransitionWillBegin() {
         super.dismissalTransitionWillBegin()
         
-        // Remove blur effect during dismissal
         visualEffectView?.removeFromSuperview()
     }
 }

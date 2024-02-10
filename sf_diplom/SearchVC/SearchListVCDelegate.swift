@@ -57,11 +57,9 @@ extension SearchListVCDelegate: UICollectionViewDelegate {
            let filmObject = model.searchedFilms[indexPath.row]
            model.updateRealm(with: filmObject)
            
-           // If film added successfully, get its kinopoiskId and isFavorite status
            let kinopoiskId = filmObject.kinopoiskId
            let isFavorite = filmObject.isFavorite
            
-           // Fetch film card from Realm by its ID
            model.getFilmCardFromRealmById(id: kinopoiskId, success: { filmCardObject in
                let vc = FilmCardViewController()
                vc.model = self.model
@@ -86,7 +84,6 @@ extension SearchListVCDelegate: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("Search text changed: \(searchText)")
         guard !searchText.isEmpty else {
-            // Clear the search results and reload the collection view with the original data
             model.searchedFilms.removeAll()
             DispatchQueue.main.async {
                 self.collectionView?.reloadData()

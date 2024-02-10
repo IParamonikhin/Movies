@@ -57,7 +57,6 @@ class Model {
     
     func requestAllPagesAndUpdateRealm(success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
         filmListStat = FilmListLoadingStatistic()
-//        print("Initial page count: \(filmListStat.pages)")
         let firstPageRequestGroup = DispatchGroup()
         firstPageRequestGroup.enter()
         
@@ -386,7 +385,6 @@ class Model {
             let filmObject = favoriteFilms[index]
             return filmObject
         } catch {
-            // Handle Realm errors
             print("Error accessing Realm: \(error)")
             return nil
         }
@@ -415,7 +413,6 @@ class Model {
                 let film = FilmObject(filmDictionary: filmJSON)
                 films.append(film)
             }
-            // Update the searchedFilms array in the model
             self.searchedFilms = films
             
             success(films)
