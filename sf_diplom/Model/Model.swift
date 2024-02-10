@@ -116,7 +116,7 @@ class Model {
         do {
             let realm = try Realm()
             
-            print(realm.configuration.fileURL)
+            print(realm.configuration.fileURL!)
             
             try realm.write {
                 if let mapperFilms = json["films"].array {

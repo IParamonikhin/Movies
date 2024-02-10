@@ -25,4 +25,4 @@ post_install do |installer|
             config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
         end
     end
-end
+End

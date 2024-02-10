@@ -23,7 +23,8 @@ class SearchViewController: UIViewController, FilmListDisplaying {
         
         searchListDelegate = SearchListVCDelegate(model: model, navigationController: self.navigationController!)
         searchListDataSource = SearchListVCDataSource(model: model)
-        
+        searchListDelegate?.setSearchBar(searchBar)
+
         if let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField {
             let placeholderText = NSAttributedString(string: "Search Films", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "BackgroundColor") ?? UIColor.gray])
             textFieldInsideSearchBar.attributedPlaceholder = placeholderText

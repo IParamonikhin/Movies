@@ -179,23 +179,27 @@ private extension FilmListCollectionViewCell {
     @objc func likeButtonTapped() {
         guard let heartImageView = likeButton.subviews.compactMap({ $0 as? UIImageView }).first else { return }
         
-        guard var film = model.getFilmFromRealmById(id: self.kinopoiskID) else {
-            let newFilm = FilmObject()
-            newFilm.kinopoiskId = self.kinopoiskID
-            newFilm.isFavorite = false
-            newFilm.nameRu = filmCellData.name
-            newFilm.ratingKinopoisk = Double(filmCellData.rate) ?? 0.0
-            newFilm.year = Int(filmCellData.year) ?? 0
-            if let imgUrl = filmCellData.imgUrl {
-                newFilm.posterUrlPreview = imgUrl.absoluteString
+        var film: FilmObject? // Declare film object outside the scope of the if let block
+            
+            if let existingFilm = model.getFilmFromRealmById(id: self.kinopoiskID) {
+                film = existingFilm // Assign existing film to the film variable
+            } else {
+                let newFilm = FilmObject()
+                newFilm.kinopoiskId = self.kinopoiskID
+                newFilm.isFavorite = false
+                newFilm.nameRu = filmCellData.name
+                newFilm.ratingKinopoisk = Double(filmCellData.rate) ?? 0.0
+                newFilm.year = Int(filmCellData.year) ?? 0
+                if let imgUrl = filmCellData.imgUrl {
+                    newFilm.posterUrlPreview = imgUrl.absoluteString
+                }
+                
+                model.updateRealm(with: newFilm)
+                film = newFilm // Assign new film to the film variable
             }
-            
-            model.updateRealm(with: newFilm)
-            
-            heartImageView.tintColor = .red
-            return
-        }
-        
+        guard let film = film else {
+              return
+          }
         let newFavoriteState = !film.isFavorite
         
         do {

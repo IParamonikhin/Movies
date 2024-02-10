@@ -16,7 +16,9 @@ class SearchListVCDelegate: NSObject, UINavigationControllerDelegate {
     private var navigationController: UINavigationController?
     private var model: Model!
     private var collectionView: UICollectionView?
-
+    private var searchBar: UISearchBar?
+    private var tapGestureRecognizer: UITapGestureRecognizer?
+    
     init(model: Model, navigationController: UINavigationController) {
         self.model = model
         self.navigationController = navigationController
@@ -24,6 +26,21 @@ class SearchListVCDelegate: NSObject, UINavigationControllerDelegate {
 
     func setCollectionView(_ collectionView: UICollectionView) {
         self.collectionView = collectionView
+    }
+    
+    func setSearchBar(_ searchBar: UISearchBar) {
+        self.searchBar = searchBar
+        setupTapGestureRecognizer()
+    }
+    
+    private func setupTapGestureRecognizer() {
+        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        tapGestureRecognizer?.cancelsTouchesInView = false
+        navigationController?.view.addGestureRecognizer(tapGestureRecognizer!)
+    }
+    
+    @objc private func handleTap(_ sender: UITapGestureRecognizer) {
+        searchBar?.resignFirstResponder()
     }
 
 }
