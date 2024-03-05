@@ -27,6 +27,10 @@
 		2C0D045A2B46E1C5007FEAA7 /* FilmCardVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0D04592B46E1C5007FEAA7 /* FilmCardVCDelegate.swift */; };
 		2C0D045C2B46E2AC007FEAA7 /* FilmCardVCDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0D045B2B46E2AC007FEAA7 /* FilmCardVCDataSource.swift */; };
 		2C0D045E2B46E2C4007FEAA7 /* FilmCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0D045D2B46E2C4007FEAA7 /* FilmCardCollectionViewCell.swift */; };
+		2C27A3E82B94C6F3005ACD0F /* sf_diplomTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C27A3E72B94C6F3005ACD0F /* sf_diplomTests.swift */; };
+		2C3377D02B9796D4007DBCEF /* ModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3377CF2B9796D4007DBCEF /* ModelMock.swift */; };
+		2C3377D82B979926007DBCEF /* sf_diplomUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3377D72B979926007DBCEF /* sf_diplomUITests.swift */; };
+		2C3377DA2B979926007DBCEF /* sf_diplomUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3377D92B979926007DBCEF /* sf_diplomUITestsLaunchTests.swift */; };
 		2C7F9D372B654CFF00F48993 /* FavoritesVCDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7F9D362B654CFF00F48993 /* FavoritesVCDataSource.swift */; };
 		2C7F9D392B654FF500F48993 /* FavoritesVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7F9D382B654FF500F48993 /* FavoritesVCDelegate.swift */; };
 		2CACA2542B52DFEE00553277 /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACA2532B52DFEE00553277 /* DescriptionViewController.swift */; };
@@ -34,6 +38,23 @@
 		2CAED3C62B6F949C00AC7407 /* SearchListVCDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAED3C52B6F949C00AC7407 /* SearchListVCDataSource.swift */; };
 		83005A6ADBB09B106AF136B0 /* Pods_sf_diplom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC7057CA6F5EFAB2BBC0352B /* Pods_sf_diplom.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2C27A3E92B94C6F3005ACD0F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C0608FB2B2B5C4E0078FF50 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C0609022B2B5C4E0078FF50;
+			remoteInfo = sf_diplom;
+		};
+		2C3377DB2B979926007DBCEF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C0608FB2B2B5C4E0078FF50 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C0609022B2B5C4E0078FF50;
+			remoteInfo = sf_diplom;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2C05D3352B2B85740005B3F7 /* FilmCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmCardViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +79,12 @@
 		2C0D04592B46E1C5007FEAA7 /* FilmCardVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmCardVCDelegate.swift; sourceTree = "<group>"; };
 		2C0D045B2B46E2AC007FEAA7 /* FilmCardVCDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmCardVCDataSource.swift; sourceTree = "<group>"; };
 		2C0D045D2B46E2C4007FEAA7 /* FilmCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmCardCollectionViewCell.swift; sourceTree = "<group>"; };
+		2C27A3E52B94C6F3005ACD0F /* sf_diplomTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sf_diplomTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C27A3E72B94C6F3005ACD0F /* sf_diplomTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sf_diplomTests.swift; sourceTree = "<group>"; };
+		2C3377CF2B9796D4007DBCEF /* ModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelMock.swift; sourceTree = "<group>"; };
+		2C3377D52B979926007DBCEF /* sf_diplomUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sf_diplomUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C3377D72B979926007DBCEF /* sf_diplomUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sf_diplomUITests.swift; sourceTree = "<group>"; };
+		2C3377D92B979926007DBCEF /* sf_diplomUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sf_diplomUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2C7F9D362B654CFF00F48993 /* FavoritesVCDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVCDataSource.swift; sourceTree = "<group>"; };
 		2C7F9D382B654FF500F48993 /* FavoritesVCDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesVCDelegate.swift; sourceTree = "<group>"; };
 		2CACA2532B52DFEE00553277 /* DescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +101,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				83005A6ADBB09B106AF136B0 /* Pods_sf_diplom.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C27A3E22B94C6F3005ACD0F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C3377D22B979926007DBCEF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +146,8 @@
 			isa = PBXGroup;
 			children = (
 				2C0609052B2B5C4E0078FF50 /* sf_diplom */,
+				2C27A3E62B94C6F3005ACD0F /* sf_diplomTests */,
+				2C3377D62B979926007DBCEF /* sf_diplomUITests */,
 				2C0609042B2B5C4E0078FF50 /* Products */,
 				62DCB161FE468E644686D37A /* Pods */,
 				A836B1A9EE17B96C41BC6359 /* Frameworks */,
@@ -115,6 +158,8 @@
 			isa = PBXGroup;
 			children = (
 				2C0609032B2B5C4E0078FF50 /* sf_diplom.app */,
+				2C27A3E52B94C6F3005ACD0F /* sf_diplomTests.xctest */,
+				2C3377D52B979926007DBCEF /* sf_diplomUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -134,6 +179,7 @@
 				2C06090F2B2B5C500078FF50 /* Assets.xcassets */,
 				2C0609112B2B5C500078FF50 /* LaunchScreen.storyboard */,
 				2C0609142B2B5C500078FF50 /* Info.plist */,
+				2C3377CF2B9796D4007DBCEF /* ModelMock.swift */,
 			);
 			path = sf_diplom;
 			sourceTree = "<group>";
@@ -169,6 +215,23 @@
 				2CEEDDA42B59A3FE008F56AB /* FullImageVC */,
 			);
 			path = FilmCardVC;
+			sourceTree = "<group>";
+		};
+		2C27A3E62B94C6F3005ACD0F /* sf_diplomTests */ = {
+			isa = PBXGroup;
+			children = (
+				2C27A3E72B94C6F3005ACD0F /* sf_diplomTests.swift */,
+			);
+			path = sf_diplomTests;
+			sourceTree = "<group>";
+		};
+		2C3377D62B979926007DBCEF /* sf_diplomUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2C3377D72B979926007DBCEF /* sf_diplomUITests.swift */,
+				2C3377D92B979926007DBCEF /* sf_diplomUITestsLaunchTests.swift */,
+			);
+			path = sf_diplomUITests;
 			sourceTree = "<group>";
 		};
 		2CACA2522B52DFC100553277 /* DescriptionVC */ = {
@@ -226,6 +289,42 @@
 			productReference = 2C0609032B2B5C4E0078FF50 /* sf_diplom.app */;
 			productType = "com.apple.product-type.application";
 		};
+		2C27A3E42B94C6F3005ACD0F /* sf_diplomTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C27A3ED2B94C6F3005ACD0F /* Build configuration list for PBXNativeTarget "sf_diplomTests" */;
+			buildPhases = (
+				2C27A3E12B94C6F3005ACD0F /* Sources */,
+				2C27A3E22B94C6F3005ACD0F /* Frameworks */,
+				2C27A3E32B94C6F3005ACD0F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2C27A3EA2B94C6F3005ACD0F /* PBXTargetDependency */,
+			);
+			name = sf_diplomTests;
+			productName = sf_diplomTests;
+			productReference = 2C27A3E52B94C6F3005ACD0F /* sf_diplomTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2C3377D42B979926007DBCEF /* sf_diplomUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C3377DD2B979926007DBCEF /* Build configuration list for PBXNativeTarget "sf_diplomUITests" */;
+			buildPhases = (
+				2C3377D12B979926007DBCEF /* Sources */,
+				2C3377D22B979926007DBCEF /* Frameworks */,
+				2C3377D32B979926007DBCEF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2C3377DC2B979926007DBCEF /* PBXTargetDependency */,
+			);
+			name = sf_diplomUITests;
+			productName = sf_diplomUITests;
+			productReference = 2C3377D52B979926007DBCEF /* sf_diplomUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -233,11 +332,19 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					2C0609022B2B5C4E0078FF50 = {
 						CreatedOnToolsVersion = 15.0.1;
+					};
+					2C27A3E42B94C6F3005ACD0F = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 2C0609022B2B5C4E0078FF50;
+					};
+					2C3377D42B979926007DBCEF = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 2C0609022B2B5C4E0078FF50;
 					};
 				};
 			};
@@ -255,6 +362,8 @@
 			projectRoot = "";
 			targets = (
 				2C0609022B2B5C4E0078FF50 /* sf_diplom */,
+				2C27A3E42B94C6F3005ACD0F /* sf_diplomTests */,
+				2C3377D42B979926007DBCEF /* sf_diplomUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -266,6 +375,20 @@
 			files = (
 				2C0609132B2B5C500078FF50 /* LaunchScreen.storyboard in Resources */,
 				2C0609102B2B5C500078FF50 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C27A3E32B94C6F3005ACD0F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C3377D32B979926007DBCEF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,6 +454,7 @@
 				2C05D3562B2C3B340005B3F7 /* FilmListCollectionViewCell.swift in Sources */,
 				2C7F9D372B654CFF00F48993 /* FavoritesVCDataSource.swift in Sources */,
 				2C0D04572B36E867007FEAA7 /* FilmDBModel.swift in Sources */,
+				2C3377D02B9796D4007DBCEF /* ModelMock.swift in Sources */,
 				2C0B96E82B5D0D8D00338BFD /* FavoritesViewController.swift in Sources */,
 				2C0D045E2B46E2C4007FEAA7 /* FilmCardCollectionViewCell.swift in Sources */,
 				2C05D35C2B2C56000005B3F7 /* Model.swift in Sources */,
@@ -344,7 +468,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2C27A3E12B94C6F3005ACD0F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C27A3E82B94C6F3005ACD0F /* sf_diplomTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C3377D12B979926007DBCEF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C3377DA2B979926007DBCEF /* sf_diplomUITestsLaunchTests.swift in Sources */,
+				2C3377D82B979926007DBCEF /* sf_diplomUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2C27A3EA2B94C6F3005ACD0F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2C0609022B2B5C4E0078FF50 /* sf_diplom */;
+			targetProxy = 2C27A3E92B94C6F3005ACD0F /* PBXContainerItemProxy */;
+		};
+		2C3377DC2B979926007DBCEF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2C0609022B2B5C4E0078FF50 /* sf_diplom */;
+			targetProxy = 2C3377DB2B979926007DBCEF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2C0609112B2B5C500078FF50 /* LaunchScreen.storyboard */ = {
@@ -539,6 +693,80 @@
 			};
 			name = Release;
 		};
+		2C27A3EB2B94C6F3005ACD0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J5V4FRQ99J;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.piv.sf-diplomTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/sf_diplom.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/sf_diplom";
+			};
+			name = Debug;
+		};
+		2C27A3EC2B94C6F3005ACD0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J5V4FRQ99J;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.piv.sf-diplomTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/sf_diplom.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/sf_diplom";
+			};
+			name = Release;
+		};
+		2C3377DE2B979926007DBCEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J5V4FRQ99J;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.piv.sf-diplomUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = sf_diplom;
+			};
+			name = Debug;
+		};
+		2C3377DF2B979926007DBCEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J5V4FRQ99J;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.piv.sf-diplomUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = sf_diplom;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -556,6 +784,24 @@
 			buildConfigurations = (
 				2C0609182B2B5C500078FF50 /* Debug */,
 				2C0609192B2B5C500078FF50 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C27A3ED2B94C6F3005ACD0F /* Build configuration list for PBXNativeTarget "sf_diplomTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C27A3EB2B94C6F3005ACD0F /* Debug */,
+				2C27A3EC2B94C6F3005ACD0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C3377DD2B979926007DBCEF /* Build configuration list for PBXNativeTarget "sf_diplomUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C3377DE2B979926007DBCEF /* Debug */,
+				2C3377DF2B979926007DBCEF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

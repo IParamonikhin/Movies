@@ -132,6 +132,7 @@ private extension FilmListCollectionViewCell {
         yearLabel.layer.cornerRadius = 4
         yearLabel.clipsToBounds = true
         
+        likeButton.accessibilityIdentifier = "likeButton"
         likeButton.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(likeButtonTapped))
         likeButton.addGestureRecognizer(tapGesture)

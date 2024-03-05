@@ -19,7 +19,7 @@ class FilmListViewController: UIViewController, FilmListDisplaying {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.accessibilityIdentifier = "filmListViewController"
         initializeFilmList()
         setupFilmListCollectionView()
 
@@ -49,12 +49,14 @@ class FilmListViewController: UIViewController, FilmListDisplaying {
     }
 
     func setupFilmListCollectionView() {
+        
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .vertical
         collectionViewLayout.minimumInteritemSpacing = 0
 
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         view.addSubview(collectionView)
+        collectionView.accessibilityIdentifier = "collectionView"
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.bottom.left.right.equalToSuperview()
