@@ -56,17 +56,7 @@ extension SearchListVCDelegate: UICollectionViewDelegateFlowLayout {
     }
 }
 
-// MARK: - UIScrollViewDelegate
 
-extension SearchListVCDelegate: UIScrollViewDelegate {
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offsetY = scrollView.contentOffset.y
-        let contentHeight = scrollView.contentSize.height
-        let screenHeight = scrollView.frame.size.height
-
-    }
-}
     // MARK: - UICollectionViewDelegate
     
 extension SearchListVCDelegate: UICollectionViewDelegate {

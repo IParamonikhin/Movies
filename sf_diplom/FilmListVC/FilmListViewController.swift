@@ -7,8 +7,6 @@
 import UIKit
 import SnapKit
 
-import UIKit
-import SnapKit
 
 class FilmListViewController: UIViewController, FilmListDisplaying {
 

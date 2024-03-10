@@ -93,7 +93,7 @@ class Model {
                 
                 allPagesRequestGroup.enter()
                 
-                self.requestJSON(url: url, success: { json in
+                self.requestJSON(url: url, success: { (json: JSON) in
                     self.updateRealm(with: json)
                     allPagesRequestGroup.leave()
                 }, failure: { error in
@@ -154,17 +154,15 @@ class Model {
     
     // MARK: - JSON Request
     
-    private func requestJSON(url: URL, success: @escaping (JSON) -> Void, failure: @escaping (Error) -> Void) {
+    private func requestJSON<T: Decodable>(url: URL, success: @escaping (T) -> Void, failure: @escaping (Error) -> Void) {
         let headers = ["x-api-key": api.kinopoiskToken, "Content-Type": "application/json"]
         
         AF.request(url, encoding: JSONEncoding.default, headers: HTTPHeaders(headers))
             .validate()
-            .responseJSON { response in
+            .responseDecodable(of: T.self) { response in
                 switch response.result {
                 case .success(let value):
-                    let json = JSON(value)
-                    success(json)
-                    
+                    success(value)
                 case .failure(let error):
                     failure(APIError.networkError(error))
                 }
@@ -401,7 +399,7 @@ class Model {
             return
         }
         
-        requestJSON(url: url, success: { json in
+        requestJSON(url: url, success: { (json: JSON) in
             guard let filmsJSON = json["films"].array else {
                 failure(APIError.invalidResponse)
                 return

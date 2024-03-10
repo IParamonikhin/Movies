@@ -19,6 +19,8 @@ class FilmCardViewController: UIViewController {
 
     private var filmCardVCDelegate: FilmCardVCDelegate?
     private var filmCardVCDataSource: FilmCardVCDataSource?
+    private var fullScreenImageVC: FullImageViewController?
+    
 
     private let scrollView: UIScrollView = {
         let scroll = UIScrollView()
@@ -157,6 +159,9 @@ class FilmCardViewController: UIViewController {
         super.viewDidLoad()
         filmCardVCDelegate = FilmCardVCDelegate(model: self.model!)
         filmCardVCDataSource = FilmCardVCDataSource(images: Array(filmCard!.images))
+        filmCardVCDataSource?.imageTappedHandler = { [weak self] imageUrl in
+            self?.showFullScreenImage(with: imageUrl)
+        }
         setupUI()
         configure()
     }
@@ -343,6 +348,12 @@ private extension FilmCardViewController{
         collectionView.delegate = self.filmCardVCDelegate
     }
     
+    func showFullScreenImage(with imageUrl: URL) {
+        let fullScreenImageVC = FullImageViewController()
+        fullScreenImageVC.imageUrls = filmCard?.images.compactMap { URL(string: $0.imageUrl) } ?? []
+        fullScreenImageVC.currentIndex = filmCard?.images.firstIndex(where: { $0.imageUrl == imageUrl.absoluteString }) ?? 0
+        present(fullScreenImageVC, animated: true, completion: nil)
+    }
     
     // MARK: - Action Methods
     

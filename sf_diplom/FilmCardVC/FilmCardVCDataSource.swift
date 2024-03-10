@@ -11,6 +11,7 @@ import UIKit
 class FilmCardVCDataSource: NSObject, UICollectionViewDataSource{
     
     var images: [ImageObject]
+    var imageTappedHandler: ((URL) -> Void)?
     
     init(images: [ImageObject]) {
         self.images = images
@@ -25,6 +26,11 @@ class FilmCardVCDataSource: NSObject, UICollectionViewDataSource{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! FilmCardCollectionViewCell
         cell.configure(url: URL(string: self.images[indexPath.row].previewUrl)!)
     
+        cell.tapGestureHandler = {
+                    self.imageTappedHandler?(URL(string: self.images[indexPath.row].imageUrl)!)
+                }
+                
+        
         return cell
     }
     

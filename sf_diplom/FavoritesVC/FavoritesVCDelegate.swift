@@ -38,18 +38,7 @@ extension FavoritesVCDelegate: UICollectionViewDelegateFlowLayout {
     }
 }
 
-// MARK: - UIScrollViewDelegate
 
-extension FavoritesVCDelegate: UIScrollViewDelegate {
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offsetY = scrollView.contentOffset.y
-        let contentHeight = scrollView.contentSize.height
-        let screenHeight = scrollView.frame.size.height
-        
-        //TODO
-    }
-}
     // MARK: - UICollectionViewDelegate
     
 extension FavoritesVCDelegate: UICollectionViewDelegate {

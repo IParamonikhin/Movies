@@ -38,17 +38,7 @@ extension FilmListVCDelegate: UICollectionViewDelegateFlowLayout {
     }
 }
 
-// MARK: - UIScrollViewDelegate
 
-extension FilmListVCDelegate: UIScrollViewDelegate {
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offsetY = scrollView.contentOffset.y
-        let contentHeight = scrollView.contentSize.height
-        let screenHeight = scrollView.frame.size.height
-
-    }
-}
     // MARK: - UICollectionViewDelegate
     
 extension FilmListVCDelegate: UICollectionViewDelegate {
