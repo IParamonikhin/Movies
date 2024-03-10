@@ -1,6 +1,6 @@
 SF_DIPLOM
 
-ios 16.4
+ios 17.0
 
 CocoaPods: 
  - RealmSwift
