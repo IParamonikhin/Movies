@@ -10,7 +10,7 @@ CocoaPods:
  - SnapKit
  - MarqueeLabel/Swift
 <p align="center">
- <img width="200px" src="[img.png](https://github.com/IParamonikhin/Movies/assets/98404452/f86a9abb-ee07-422b-a107-14dda0275ee7)" alt="qr"/>
+ <img width="200px" src="[https://github.com/IParamonikhin/Movies/assets/98404452/f86a9abb-ee07-422b-a107-14dda0275ee7]" alt="qr"/>
 
 </p>
 
